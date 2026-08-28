@@ -3,6 +3,7 @@ import "./globals.css";
 import { siteConfig } from "@/config/site";
 import Header from "@/components/Header";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import SmoothScroll from "@/components/SmoothScroll";
 
 export const metadata: Metadata = {
   title: siteConfig.agencyName,
@@ -20,10 +21,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
       </head>
       <body className="min-h-full flex flex-col bg-white dark:bg-[#0f1020]">
-        <ThemeProvider>
-          <Header />
-          {children}
-        </ThemeProvider>
+        <SmoothScroll>
+          <ThemeProvider>
+            <Header />
+            {children}
+          </ThemeProvider>
+        </SmoothScroll>
       </body>
     </html>
   );

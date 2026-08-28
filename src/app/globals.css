@@ -135,3 +135,28 @@ body {
     text-transform: uppercase;
   }
 }
+
+/* ── Lenis smooth scroll ──────────────────────────────────────────
+   Required CSS for Lenis to work properly.
+   The `lenis` class is auto-added to <html> by the SmoothScroll provider.
+   ───────────────────────────────────────────────────────────────── */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
