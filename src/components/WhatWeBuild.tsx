@@ -1,26 +1,46 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 const items = [
-  "SaaS Platforms",
-  "AI Applications",
-  "Marketplaces",
-  "Fintech Systems",
-  "E-commerce Stores",
-  "CRM Systems",
-  "Mobile Apps",
-  "Dashboards",
+  "Revenue-Driving Websites",
+  "Customer Acquisition Funnels",
+  "Online Stores",
+  "Booking & Reservation Systems",
+  "Customer Portals",
+  "Mobile-First Experiences",
+  "Admin & Analytics Dashboards",
+  "Brand Identity Systems",
 ];
 
 const row1 = [...items, ...items];
 const row2 = [...[...items].reverse(), ...[...items].reverse()];
 
 export default function WhatWeBuild() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Pause both CSS marquee animations when off-screen.
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const tracks = el.querySelectorAll<HTMLElement>(".www-marquee-1, .www-marquee-2");
+    if (tracks.length === 0) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        const state = entry.isIntersecting ? "running" : "paused";
+        tracks.forEach((t) => (t.style.animationPlayState = state));
+      },
+      { threshold: 0 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   return (
-    <section className="relative overflow-hidden bg-[#f5f6fa] py-16 transition-colors duration-500 dark:bg-[#0f1020] sm:py-24">
+    <section ref={sectionRef} className="relative overflow-hidden bg-[#f5f6fa] py-16 transition-colors duration-500 dark:bg-[#0f1020] sm:py-24">
       {/* ambient glow */}
       <div
         aria-hidden
@@ -35,7 +55,7 @@ export default function WhatWeBuild() {
           transition={{ duration: 0.7, ease: EASE }}
           className="inline-block text-xs font-medium uppercase tracking-[0.2em] text-[#4e516a] dark:text-white/50"
         >
-          What we build
+          What we deliver
         </motion.span>
         <motion.h2
           initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
@@ -44,11 +64,11 @@ export default function WhatWeBuild() {
           transition={{ duration: 0.8, ease: EASE, delay: 0.1 }}
           className="mx-auto mt-4 max-w-xl text-[28px] font-medium leading-[1.1] tracking-tight text-[#202342] dark:text-white sm:text-[40px] sm:tracking-[-1.2px]"
         >
-          Products across every domain
+          Solutions that grow your business
         </motion.h2>
       </div>
 
-      {/* Row 1 — left to right */}
+      {/* Row 1 left to right */}
       <div className="relative flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
         <div className="www-marquee-1 flex w-max items-center gap-3 pl-3 sm:gap-4 sm:pl-4">
           {row1.map((item, i) => (
@@ -62,7 +82,7 @@ export default function WhatWeBuild() {
         </div>
       </div>
 
-      {/* Row 2 — right to left (reverse direction) */}
+      {/* Row 2 right to left (reverse direction) */}
       <div className="relative mt-3 flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)] sm:mt-4">
         <div className="www-marquee-2 flex w-max items-center gap-3 pl-3 sm:gap-4 sm:pl-4">
           {row2.map((item, i) => (

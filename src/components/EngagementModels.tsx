@@ -26,7 +26,7 @@ const models = [
     category: "Flexibility & Scale",
     title: "Staff Augmentation",
     tagline: "Extend Your Team, Instantly.",
-    desc: "Add skilled developers, designers, or specialists to your existing team — without the hassle of hiring.",
+    desc: "Add skilled developers, designers, or specialists to your existing team without the hassle of hiring.",
     features: [
       "Pre-vetted, experienced talent",
       "Flexible scaling (up/down anytime)",
@@ -40,7 +40,7 @@ const models = [
     category: "Trust & Discretion",
     title: "White Label Partnership",
     tagline: "Deliver More, Under Your Brand.",
-    desc: "Work with us as your behind-the-scenes team. We build and deliver projects for your clients — completely under your agency's identity.",
+    desc: "Work with us as your behind-the-scenes team. We build and deliver projects for your clients completely under your agency's identity.",
     features: [
       "100% white-labeled delivery",
       "Confidential & secure collaboration",
@@ -255,7 +255,7 @@ export default function EngagementModels() {
             className="mt-4 text-sm text-[#4e516a] dark:text-white/60 sm:text-base"
           >
             MVP sprint, embedded squad, white-label delivery, or a dedicated
-            long-term team — four ways to get production code shipping under your
+            long-term team four ways to get production code shipping under your
             name, not ours.
           </motion.p>
         </div>

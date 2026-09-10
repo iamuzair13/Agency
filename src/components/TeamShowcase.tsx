@@ -9,74 +9,74 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 const team = [
   {
     name: "Sarah Chen",
-    role: "Full Stack Engineer",
+    role: "Strategy Lead",
     initials: "SC",
     color: "from-[#4555fd] to-[#7c3aed]",
-    bio: "Ships production code at the speed of thought. 8 years across fintech and SaaS.",
-    skills: ["React", "Node.js", "PostgreSQL"],
+    bio: "Turns business goals into clear digital strategies. 8 years helping businesses grow online.",
+    skills: ["Strategy", "Growth", "Planning"],
     location: "Dubai",
   },
   {
     name: "Marcus Webb",
-    role: "Backend Architect",
+    role: "Design Director",
     initials: "MW",
     color: "from-[#7c3aed] to-[#db2777]",
-    bio: "Designs systems that survive scale. Ex-Stripe, obsessed with clean APIs.",
-    skills: ["Go", "GraphQL", "AWS"],
+    bio: "Creates brand experiences that customers remember and trust.",
+    skills: ["Branding", "Design", "Identity"],
     location: "Remote",
   },
   {
     name: "Sophia Reeves",
-    role: "Product Designer",
+    role: "Brand Strategist",
     initials: "SR",
     color: "from-[#db2777] to-[#f59e0b]",
-    bio: "Turns complex flows into interfaces people actually enjoy using.",
-    skills: ["Figma", "Design Systems", "Research"],
+    bio: "Helps businesses look premium and feel trustworthy from the first impression.",
+    skills: ["Brand", "Visual", "Story"],
     location: "London",
   },
   {
     name: "Liam Foster",
-    role: "Frontend Lead",
+    role: "Project Lead",
     initials: "LF",
     color: "from-[#4555fd] to-[#0ea5e9]",
-    bio: "Pixel-perfect UIs with Lighthouse scores that make engineers jealous.",
-    skills: ["Next.js", "Tailwind", "Motion"],
+    bio: "Makes sure your project launches on time and exceeds expectations.",
+    skills: ["Delivery", "Quality", "Support"],
     location: "Dubai",
   },
   {
     name: "Hannah Choi",
-    role: "AI/ML Engineer",
+    role: "Growth Specialist",
     initials: "HC",
     color: "from-[#0ea5e9] to-[#10b981]",
-    bio: "Builds the AI pipelines that make our 40% speed claim real, not marketing.",
-    skills: ["Python", "LangChain", "RAG"],
+    bio: "Turns website visitors into paying customers with conversion-focused design.",
+    skills: ["Conversion", "SEO", "Analytics"],
     location: "Seoul",
   },
   {
     name: "David Sequeira",
-    role: "DevOps Engineer",
+    role: "Delivery Manager",
     initials: "DS",
     color: "from-[#10b981] to-[#4555fd]",
-    bio: "Keeps the infra humming. Zero-downtime deploys and 99.9% uptime.",
-    skills: ["Docker", "K8s", "CI/CD"],
+    bio: "Keeps everything running smoothly. Your project is in safe hands.",
+    skills: ["Project", "Timeline", "Support"],
     location: "Remote",
   },
   {
     name: "Emma Robertson",
-    role: "Product Manager",
+    role: "Client Partner",
     initials: "ER",
     color: "from-[#f59e0b] to-[#db2777]",
-    bio: "Translates founder chaos into clear milestones. You'll love her, investors do.",
-    skills: ["Strategy", "Roadmaps", "Analytics"],
+    bio: "Your main point of contact. Makes sure we understand your business and deliver.",
+    skills: ["Client", "Communication", "Care"],
     location: "New York",
   },
   {
     name: "Noah Bennett",
-    role: "Mobile Lead",
+    role: "Experience Lead",
     initials: "NB",
     color: "from-[#7c3aed] to-[#4555fd]",
-    bio: "React Native and Swift. Ships apps that feel native, not webviews in a trench coat.",
-    skills: ["React Native", "Swift", "Expo"],
+    bio: "Designs customer journeys so smooth your customers will tell their friends.",
+    skills: ["UX", "Journey", "Mobile"],
     location: "Berlin",
   },
 ];
@@ -99,7 +99,7 @@ export default function TeamShowcase() {
             The people
           </span>
           <h2 className="mt-4 text-[28px] font-medium leading-[1.05] tracking-tight text-[#202342] dark:text-white sm:text-[40px] sm:tracking-[-1.5px] lg:text-[48px]">
-            Senior hands on every commit.
+            Senior experts on every project.
           </h2>
           <p className="mt-4 text-sm text-[#4e516a] dark:text-white/60 sm:text-base">
             No junior outsourcing, no offshore hand-offs. The people who scope
@@ -157,7 +157,7 @@ export default function TeamShowcase() {
                 </motion.span>
               </div>
 
-              {/* Bottom info — always visible */}
+              {/* Bottom info always visible */}
               <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
                 <motion.div
                   animate={{ y: hovered === i ? -80 : 0 }}
@@ -184,7 +184,7 @@ export default function TeamShowcase() {
                 </motion.div>
               </div>
 
-              {/* Hover reveal — bio + skills */}
+              {/* Hover reveal bio + skills */}
               <motion.div
                 initial={false}
                 animate={{
@@ -241,7 +241,7 @@ export default function TeamShowcase() {
               We&apos;re always looking for senior talent.
             </h3>
             <p className="mt-1 text-sm text-[#4e516a] dark:text-white/60">
-              Remote-first, async-friendly, and we ship real things.
+              We help businesses grow. Come build with us.
             </p>
           </div>
           <PixelButton

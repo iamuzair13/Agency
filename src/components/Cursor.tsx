@@ -20,8 +20,19 @@ export default function Cursor({ containerId }: { containerId: string }) {
     const container = document.getElementById(containerId);
     if (!container) return;
 
-    const move = (e: MouseEvent) => {
-      const rect = container.getBoundingClientRect();
+    // Cache the container's bounding rect so we don't force a synchronous
+    // layout reflow (getBoundingClientRect) on every single mousemove.
+    // Refresh the cache on scroll / resize when the rect could have changed.
+    let rect = container.getBoundingClientRect();
+
+    const refreshRect = () => {
+      rect = container.getBoundingClientRect();
+    };
+
+    window.addEventListener("scroll", refreshRect, { passive: true });
+    window.addEventListener("resize", refreshRect);
+
+    const onMove = (e: MouseEvent) => {
       const inside =
         e.clientX >= rect.left &&
         e.clientX <= rect.right &&
@@ -31,34 +42,25 @@ export default function Cursor({ containerId }: { containerId: string }) {
         x.set(e.clientX);
         y.set(e.clientY);
         setVisible(true);
+        // Check hover state in the same handler no second listener needed.
+        const el = e.target as HTMLElement;
+        setHovering(
+          !!el.closest("a, button, [role='button'], input, textarea, .group")
+        );
       } else {
         setVisible(false);
       }
     };
 
-    const checkHover = (e: MouseEvent) => {
-      const rect = container.getBoundingClientRect();
-      const inside =
-        e.clientX >= rect.left &&
-        e.clientX <= rect.right &&
-        e.clientY >= rect.top &&
-        e.clientY <= rect.bottom;
-      if (!inside) return;
-      const el = e.target as HTMLElement;
-      setHovering(
-        !!el.closest("a, button, [role='button'], input, textarea, .group")
-      );
-    };
-
     const leave = () => setVisible(false);
 
-    window.addEventListener("mousemove", move);
-    window.addEventListener("mouseover", checkHover);
+    window.addEventListener("mousemove", onMove);
     container.addEventListener("mouseleave", leave);
 
     return () => {
-      window.removeEventListener("mousemove", move);
-      window.removeEventListener("mouseover", checkHover);
+      window.removeEventListener("scroll", refreshRect);
+      window.removeEventListener("resize", refreshRect);
+      window.removeEventListener("mousemove", onMove);
       container.removeEventListener("mouseleave", leave);
     };
   }, [x, y, containerId]);

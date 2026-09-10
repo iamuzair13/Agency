@@ -1,25 +1,45 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 const team = [
-  { name: "Sarah Chen", role: "Full Stack Engineer", initials: "SC", color: "from-[#4555fd] to-[#7c3aed]" },
-  { name: "Marcus Webb", role: "Backend Architect", initials: "MW", color: "from-[#7c3aed] to-[#db2777]" },
-  { name: "Sophia Reeves", role: "Product Designer", initials: "SR", color: "from-[#db2777] to-[#f59e0b]" },
-  { name: "Liam Foster", role: "Frontend Lead", initials: "LF", color: "from-[#4555fd] to-[#0ea5e9]" },
-  { name: "Hannah Choi", role: "AI/ML Engineer", initials: "HC", color: "from-[#0ea5e9] to-[#10b981]" },
-  { name: "David Sequeira", role: "DevOps Engineer", initials: "DS", color: "from-[#10b981] to-[#4555fd]" },
-  { name: "Emma Robertson", role: "Product Manager", initials: "ER", color: "from-[#f59e0b] to-[#db2777]" },
-  { name: "Noah Bennett", role: "Mobile Lead", initials: "NB", color: "from-[#7c3aed] to-[#4555fd]" },
+  { name: "Sarah Chen", role: "Strategy Lead", initials: "SC", color: "from-[#4555fd] to-[#7c3aed]" },
+  { name: "Marcus Webb", role: "Design Director", initials: "MW", color: "from-[#7c3aed] to-[#db2777]" },
+  { name: "Sophia Reeves", role: "Brand Strategist", initials: "SR", color: "from-[#db2777] to-[#f59e0b]" },
+  { name: "Liam Foster", role: "Project Lead", initials: "LF", color: "from-[#4555fd] to-[#0ea5e9]" },
+  { name: "Hannah Choi", role: "Growth Specialist", initials: "HC", color: "from-[#0ea5e9] to-[#10b981]" },
+  { name: "David Sequeira", role: "Delivery Manager", initials: "DS", color: "from-[#10b981] to-[#4555fd]" },
+  { name: "Emma Robertson", role: "Client Partner", initials: "ER", color: "from-[#f59e0b] to-[#db2777]" },
+  { name: "Noah Bennett", role: "Experience Lead", initials: "NB", color: "from-[#7c3aed] to-[#4555fd]" },
 ];
 
 const loop = [...team, ...team];
 
 export default function TeamMarquee() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Pause the CSS marquee animation when the section is off-screen
+  // to save CPU/battery. Zero visual change resumes where it left off.
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const track = el.querySelector<HTMLElement>(".team-marquee");
+    if (!track) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        track.style.animationPlayState = entry.isIntersecting ? "running" : "paused";
+      },
+      { threshold: 0 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#f5f6fa] to-white py-12 transition-colors duration-500 dark:from-[#0f1020] dark:to-[#0f1020] sm:py-16">
+    <section ref={sectionRef} className="relative overflow-hidden bg-gradient-to-b from-[#f5f6fa] to-white py-12 transition-colors duration-500 dark:from-[#0f1020] dark:to-[#0f1020] sm:py-16">
       <div
         aria-hidden
         className="pointer-events-none absolute top-1/2 left-1/2 h-[200px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#4555fd]/8 blur-[100px] sm:h-[400px] sm:w-[700px] sm:blur-[150px]"

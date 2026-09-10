@@ -5,16 +5,16 @@ import { motion, useScroll, useTransform } from "framer-motion";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-// The manifesto text — words are revealed one-by-one as you scroll
+// The manifesto text words are revealed one-by-one as you scroll
 const manifesto =
-  "Anyone can write code. Writing code that matters is harder. AI changes how things get made. Human judgment decides what should. We build with both — the speed of machines, the taste of people who have shipped at scale. No boilerplate-for-hire. No black boxes. Just senior engineers, senior designers, and a fixed scope that doesn't move.";
+  "Anyone can build a website. Building a website that grows your business is harder. Technology changes how things get made. Human judgment decides what your customers actually need. We build with both the speed of modern tools, the care of people who've helped hundreds of businesses succeed. No cookie-cutter templates. No black boxes. Just senior experts, clear communication, and a fixed budget that doesn't move.";
 
 const words = manifesto.split(" ");
 
 const principles = [
-  { word: "AI-native", label: "AI does the grunt work" },
+  { word: "Results-first", label: "Your growth is the goal" },
   { word: "judgment", label: "Humans make the calls" },
-  { word: "fixed", label: "Scope never moves" },
+  { word: "fixed", label: "Budget never moves" },
   { word: "senior", label: "No junior outsourcing" },
 ];
 
@@ -52,7 +52,7 @@ export default function Philosophy() {
           What we believe
         </motion.span>
 
-        {/* Manifesto — word-by-word scroll reveal */}
+        {/* Manifesto word-by-word scroll reveal */}
         <p className="mt-8 text-2xl font-medium leading-[1.4] tracking-tight sm:text-3xl lg:text-[2.5rem] lg:leading-[1.35]">
           {words.map((word, i) => {
             const start = i / words.length;
@@ -100,16 +100,15 @@ function Word({
   progress: ReturnType<typeof useScroll>["scrollYProgress"];
   range: [number, number];
 }) {
+  // The original used two useTransform hooks (opacity + color), but the color
+  // transform was just changing the alpha channel which is exactly what
+  // opacity already does. Removing the redundant color transform cuts the
+  // number of scroll-linked motion values in half (~55 fewer values).
   const opacity = useTransform(progress, range, [0.15, 1]);
-  const color = useTransform(
-    progress,
-    range,
-    ["rgba(255,255,255,0.15)", "rgba(255,255,255,1)"]
-  );
 
   return (
     <motion.span
-      style={{ opacity, color }}
+      style={{ opacity, color: "rgba(255,255,255,1)" }}
       className="mr-[0.25em] inline-block"
     >
       {children}

@@ -1,13 +1,16 @@
 "use client";
 
-import Link from "next/link";
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import dynamic from "next/dynamic";
 import PixelButton from "@/components/PixelButton";
 import { Lottie } from "lottie-react";
-import Footer from "@/components/Footer";
-import ServiceAccordion from "@/components/ServiceAccordion";
-import TechMarquee from "@/components/TechMarquee";
 import { ServiceCard, services } from "@/components/ServiceCard";
+
+// Below-the-fold sections are dynamically imported to reduce initial JS.
+const Footer = dynamic(() => import("@/components/Footer"));
+const ServiceAccordion = dynamic(() => import("@/components/ServiceAccordion"));
+const TechMarquee = dynamic(() => import("@/components/TechMarquee"));
 import techLoop from "@/assets/lottie/tech-loop.json";
 import abstractLoop from "@/assets/lottie/abstract-loop.json";
 import gradientLoop from "@/assets/lottie/gradient-loop.json";
@@ -22,7 +25,7 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 const floatingIcons = [
   // ── Primary tier (largest, near top focal points) ──
   {
-    label: "Frontend",
+    label: "Websites",
     icon: (
       <>
         <path d="M3 3h18v14H3z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
@@ -39,7 +42,7 @@ const floatingIcons = [
     scaleSm: 0.55,
   },
   {
-    label: "Backend",
+    label: "Platforms",
     icon: (
       <>
         <ellipse cx="12" cy="5" rx="8" ry="3" stroke="currentColor" strokeWidth="1.8" />
@@ -58,7 +61,7 @@ const floatingIcons = [
   },
   // ── Secondary tier (medium, mid-section) ──
   {
-    label: "UI/UX",
+    label: "Experience",
     icon: (
       <>
         <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" strokeWidth="1.8" />
@@ -76,7 +79,7 @@ const floatingIcons = [
     scaleSm: 0.45,
   },
   {
-    label: "Motion",
+    label: "Video",
     icon: (
       <>
         <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.8" />
@@ -94,7 +97,7 @@ const floatingIcons = [
   },
   // ── Tertiary tier (smaller, lower section) ──
   {
-    label: "Design",
+    label: "Branding",
     icon: (
       <>
         <path d="M12 3a9 9 0 100 18 9 9 0 000-18z" stroke="currentColor" strokeWidth="1.8" />
@@ -112,7 +115,7 @@ const floatingIcons = [
     scaleSm: 0.42,
   },
   {
-    label: "Full Stack",
+    label: "Products",
     icon: (
       <>
         <path d="M12 2v20M2 12h20" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
@@ -130,7 +133,7 @@ const floatingIcons = [
   },
   // ── Accent tier (smallest, filling negative space) ──
   {
-    label: "API",
+    label: "Growth",
     icon: (
       <>
         <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
@@ -182,7 +185,7 @@ const floatingIcons = [
     scaleSm: 0.32,
   },
   {
-    label: "Analytics",
+    label: "Insights",
     icon: (
       <>
         <path d="M4 20V10M10 20V4M16 20v-8M22 20H2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
@@ -200,14 +203,14 @@ const floatingIcons = [
 ];
 
 const process = [
-  { step: "01", title: "Discovery", desc: "We dive deep into your goals, audience, and brand to define the project scope." },
-  { step: "02", title: "Design", desc: "Wireframes, prototypes, and design systems crafted to match your vision." },
-  { step: "03", title: "Develop", desc: "Clean, tested code built with modern tools and AI-augmented speed." },
-  { step: "04", title: "Deliver", desc: "Launch, iterate, and support — we stick around after go-live." },
+  { step: "01", title: "Discover", desc: "We learn your business, your customers, and your goals to define exactly what success looks like." },
+  { step: "02", title: "Design", desc: "We craft the customer experience how it looks, how it feels, and how it guides visitors to buy." },
+  { step: "03", title: "Build", desc: "We bring it to life with clean, fast, and reliable technology with weekly progress you can see." },
+  { step: "04", title: "Launch", desc: "We go live, track results, and keep improving we stick around to make sure it works." },
 ];
 
 // ─── Floating service icon card ───────────────────────────────
-function FloatingIcon({ icon, label, color, bg, posLg, posSm, delay, duration, scaleLg, scaleSm }: {
+function FloatingIcon({ icon, label, color, bg, posLg, posSm, delay, duration, scaleLg, scaleSm, active }: {
   icon: React.ReactNode;
   label: string;
   color: string;
@@ -218,6 +221,7 @@ function FloatingIcon({ icon, label, color, bg, posLg, posSm, delay, duration, s
   duration: number;
   scaleLg: number;
   scaleSm: number;
+  active: boolean;
 }) {
   return (
     <>
@@ -230,7 +234,7 @@ function FloatingIcon({ icon, label, color, bg, posLg, posSm, delay, duration, s
         style={{ ...posSm, transform: `scale(${scaleSm})` }}
       >
         <motion.div
-          animate={{ y: [0, -12, 0], rotate: [0, 2, 0] }}
+          animate={active ? { y: [0, -12, 0], rotate: [0, 2, 0] } : {}}
           transition={{ duration, repeat: Infinity, ease: "easeInOut", delay }}
           className="flex items-center gap-2 rounded-xl border border-white/40 bg-white/60 px-2.5 py-2 shadow-md backdrop-blur-md dark:border-white/10 dark:bg-white/5"
         >
@@ -257,7 +261,7 @@ function FloatingIcon({ icon, label, color, bg, posLg, posSm, delay, duration, s
         style={{ ...posLg, transform: `scale(${scaleLg})` }}
       >
         <motion.div
-          animate={{ y: [0, -18, 0], rotate: [0, 3, 0] }}
+          animate={active ? { y: [0, -18, 0], rotate: [0, 3, 0] } : {}}
           transition={{ duration, repeat: Infinity, ease: "easeInOut", delay }}
           className="flex items-center gap-2.5 rounded-2xl border border-white/40 bg-white/60 px-3.5 py-2.5 shadow-lg backdrop-blur-md dark:border-white/10 dark:bg-white/5"
         >
@@ -297,10 +301,14 @@ function LottieBg({ src, className }: {
 }
 
 export default function ServicesPage() {
+  const heroRef = useRef<HTMLElement>(null);
+  // Only run the infinite floating animations when the hero is in view.
+  const heroInView = useInView(heroRef, { margin: "100px" });
+
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#dde4ff] via-[#ece4ff] to-[#f5f6fa] pt-24 pb-16 transition-colors duration-500 dark:bg-gradient-to-b dark:from-[#1a1c35] dark:via-[#15172e] dark:to-[#0f1020] sm:pt-40 sm:pb-28 lg:pt-[200px] lg:pb-[100px]">
+      <section ref={heroRef} className="relative overflow-hidden bg-gradient-to-b from-[#dde4ff] via-[#ece4ff] to-[#f5f6fa] pt-24 pb-16 transition-colors duration-500 dark:bg-gradient-to-b dark:from-[#1a1c35] dark:via-[#15172e] dark:to-[#0f1020] sm:pt-40 sm:pb-28 lg:pt-[200px] lg:pb-[100px]">
         <div
           aria-hidden
           className="pointer-events-none absolute -top-32 -left-16 h-[220px] w-[220px] rounded-full bg-[#4555fd]/30 blur-[70px] sm:-left-32 sm:h-[520px] sm:w-[520px] sm:blur-[100px]"
@@ -342,25 +350,26 @@ export default function ServicesPage() {
             duration={fi.duration}
             scaleLg={fi.scaleLg}
             scaleSm={fi.scaleSm}
+            active={heroInView}
           />
         ))}
 
         {/* Floating decorative orbs */}
         <motion.div
           aria-hidden
-          animate={{ y: [0, -20, 0] }}
+          animate={heroInView ? { y: [0, -20, 0] } : {}}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           className="pointer-events-none absolute left-[8%] top-[30%] hidden h-16 w-16 rounded-2xl bg-gradient-to-br from-[#4555fd] to-[#7c3aed] opacity-20 blur-sm lg:block"
         />
         <motion.div
           aria-hidden
-          animate={{ y: [0, 15, 0] }}
+          animate={heroInView ? { y: [0, 15, 0] } : {}}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
           className="pointer-events-none absolute right-[10%] top-[45%] hidden h-12 w-12 rounded-full bg-gradient-to-br from-[#db2777] to-[#ea580c] opacity-20 blur-sm lg:block"
         />
         <motion.div
           aria-hidden
-          animate={{ y: [0, -12, 0] }}
+          animate={heroInView ? { y: [0, -12, 0] } : {}}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }}
           className="pointer-events-none absolute left-[15%] bottom-[15%] hidden h-10 w-10 rounded-lg bg-gradient-to-br from-[#059669] to-[#4555fd] opacity-20 blur-sm lg:block"
         />
@@ -398,9 +407,9 @@ export default function ServicesPage() {
               transition={{ duration: 0.9, ease: EASE, delay: 0.1 }}
               className="mx-auto mt-4 max-w-[400px] text-sm leading-[150%] text-[#4e516a] dark:text-[#a8acc4] sm:mt-5 sm:max-w-[560px] sm:text-lg sm:leading-[130%]"
             >
-              From frontend pixels to backend infrastructure, brand identity to
-              motion design — we cover the full spectrum of digital product
-              development.
+              From websites that convert visitors into customers to platforms
+              that scale your business we cover everything you need to grow
+              online.
             </motion.p>
           </motion.div>
 
@@ -412,9 +421,9 @@ export default function ServicesPage() {
             className="mx-auto mt-10 flex max-w-3xl flex-wrap items-center justify-center gap-x-8 gap-y-5 sm:mt-12 sm:gap-x-12"
           >
             {[
-              { num: "7+", label: "Services" },
-              { num: "50+", label: "Projects Shipped" },
-              { num: "100%", label: "Client Satisfaction" },
+              { num: "7+", label: "Solutions" },
+              { num: "6 wks", label: "Average Launch" },
+              { num: "100%", label: "You Own It" },
               { num: "24/7", label: "Support" },
             ].map((stat, i) => (
               <div key={i} className="flex flex-col items-center">
@@ -428,7 +437,7 @@ export default function ServicesPage() {
             ))}
           </motion.div>
 
-          {/* Tech marquee */}
+          {/* Benefits marquee */}
           <motion.div
             initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -436,18 +445,18 @@ export default function ServicesPage() {
             className="mx-auto mt-10 max-w-2xl sm:mt-12"
           >
             <p className="text-center text-[10px] font-medium uppercase tracking-[0.2em] text-[#4e516a]/60 dark:text-white/40">
-              Tools & Technologies
+              What You Get
             </p>
             <div className="mt-4 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
-              {["React", "Next.js", "TypeScript", "Node.js", "Tailwind", "Figma", "Framer Motion", "GSAP", "PostgreSQL", "AWS"].map((tech, i) => (
+              {["More Customers", "Higher Conversion", "Faster Launch", "Mobile-First", "SEO-Ready", "Brand Growth", "Easy to Manage", "Built to Scale"].map((benefit, i) => (
                 <motion.span
-                  key={tech}
+                  key={benefit}
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.4, ease: EASE, delay: 0.6 + i * 0.05 }}
                   className="rounded-full border border-[#202342]/10 bg-white/50 px-3 py-1.5 text-xs font-medium text-[#202342] backdrop-blur-sm transition-colors duration-500 dark:border-white/10 dark:bg-white/5 dark:text-white/70"
                 >
-                  {tech}
+                  {benefit}
                 </motion.span>
               ))}
             </div>
@@ -466,7 +475,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Services grid — flip cards */}
+      {/* Services grid flip cards */}
       <section id="services-grid" className="relative bg-[#f5f6fa] py-16 transition-colors duration-500 dark:bg-[#0f1020] sm:py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
@@ -477,7 +486,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Interactive accordion — capabilities list */}
+      {/* Interactive accordion capabilities list */}
       <ServiceAccordion />
 
       {/* Tech stack marquee band */}
@@ -544,11 +553,11 @@ export default function ServicesPage() {
           className="relative mx-auto max-w-3xl px-5 text-center sm:px-6"
         >
           <h2 className="text-[28px] font-medium leading-[1.05] tracking-tight text-white sm:text-[40px] sm:tracking-[-1.5px] lg:text-[48px]">
-            Have a project in mind?
+            Ready to grow your business?
           </h2>
           <p className="mx-auto mt-4 max-w-md text-sm text-white/60 sm:text-base">
-            Let&apos;s talk about how we can bring it to life — fast, clean, and
-            ready for the big meeting.
+            Let&apos;s talk about how we can bring it to life fast, clean, and
+            increase your revenue � fast, clear, and built to last.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
             <PixelButton

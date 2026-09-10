@@ -8,47 +8,47 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 const tiers = [
   {
-    name: "Project",
+    name: "Launch",
     subtitle: "Fixed scope, fixed price",
     price: "$8k",
     priceLabel: "starting at",
-    desc: "Best for MVPs, marketing sites, and well-defined builds with a clear deliverable.",
+    desc: "Perfect for new websites, landing pages, and well-defined projects with a clear business goal.",
     features: [
-      "Discovery + technical scoping",
-      "Senior dev squad assigned",
-      "2–6 week sprint cadence",
-      "Design, build, deploy included",
-      "30-day post-launch support",
+      "Strategy session to define your goals",
+      "Senior team assigned to your project",
+      "2–6 week delivery timeline",
+      "Design, build, and launch included",
+      "30 days of post-launch support",
     ],
     popular: false,
   },
   {
-    name: "Embedded",
-    subtitle: "Engineer-per-month",
+    name: "Growth",
+    subtitle: "Monthly partnership",
     price: "$6k",
-    priceLabel: "per engineer / month",
-    desc: "Plug a senior engineer (or several) into your team. Same standups, same sprint, same Slack.",
+    priceLabel: "per month",
+    desc: "An ongoing partnership to continuously improve your online presence and customer acquisition.",
     features: [
-      "Pre-vetted senior talent",
-      "Time-zone aligned (US / UK)",
-      "Direct comms with your team",
-      "Scale up or down monthly",
-      "Dedicated engagement lead",
+      "Dedicated expert on your project",
+      "Quick responses, same-week updates",
+      "Direct communication with your team",
+      "Scale up or down as your needs change",
+      "Monthly strategy and progress reviews",
     ],
     popular: true,
   },
   {
-    name: "Dedicated Squad",
-    subtitle: "Full product team",
+    name: "Scale",
+    subtitle: "Full partnership",
     price: "Custom",
-    priceLabel: "tailored to roadmap",
-    desc: "A full-stack squad — PM, design, engineering — owning the roadmap end-to-end as your product partner.",
+    priceLabel: "tailored to your goals",
+    desc: "A complete team strategy, design, and development owning your digital growth end-to-end.",
     features: [
-      "End-to-end product ownership",
-      "PM + design + engineering",
-      "Quarterly roadmap planning",
-      "SLAs + dedicated infra ops",
-      "Priority response & on-call",
+      "Complete digital strategy and execution",
+      "Strategy + design + development team",
+      "Quarterly business growth planning",
+      "Priority support and fast turnaround",
+      "Dedicated project lead",
     ],
     popular: false,
   },
@@ -89,7 +89,7 @@ export default function PricingTiers() {
             transition={{ duration: 0.7, ease: EASE }}
             className="inline-block text-xs font-medium uppercase tracking-[0.2em] text-[#4e516a] dark:text-white/50"
           >
-            Pricing
+            Investment
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
@@ -98,7 +98,7 @@ export default function PricingTiers() {
             transition={{ duration: 0.8, ease: EASE, delay: 0.1 }}
             className="mt-4 text-[28px] font-medium leading-[1.1] tracking-tight text-[#202342] dark:text-white sm:text-[40px] sm:tracking-[-1.2px]"
           >
-            Pricing that scales with you
+            Pricing that grows with you
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
@@ -107,8 +107,8 @@ export default function PricingTiers() {
             transition={{ duration: 0.7, ease: EASE, delay: 0.2 }}
             className="mt-4 text-sm text-[#4e516a] dark:text-white/60 sm:text-base"
           >
-            Three ways to engage. Pick the model that fits where you are today —
-            switch tiers any time as your roadmap shifts.
+            Three ways to work with us. Pick the model that fits where your
+            business is today switch as your needs change.
           </motion.p>
         </div>
 
@@ -211,14 +211,14 @@ export default function PricingTiers() {
           transition={{ duration: 0.7, ease: EASE, delay: 0.3 }}
           className="mt-10 text-center text-sm text-[#4e516a] dark:text-white/50"
         >
-          All engagements include NDA, IP assignment, and a 14-day fit guarantee.{" "}
+          All projects include NDA, full ownership, and a 14-day satisfaction guarantee.{" "}
           <Link
             href="/contact"
             className="font-medium text-[#4555fd] underline-offset-4 transition-colors hover:underline dark:text-[#6b78ff]"
           >
-            Not sure which tier fits?
+            Not sure which fits?
           </Link>{" "}
-          — we&apos;ll point you to the right one.
+          we&apos;ll point you to the right one.
         </motion.p>
       </div>
     </section>

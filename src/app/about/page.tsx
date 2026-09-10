@@ -1,20 +1,22 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
 import PixelButton from "@/components/PixelButton";
-import Counters from "@/components/Counters";
-import Philosophy from "@/components/Philosophy";
-import MilestonesTimeline from "@/components/MilestonesTimeline";
-import TeamShowcase from "@/components/TeamShowcase";
-import Footer from "@/components/Footer";
+
+// Below-the-fold sections are dynamically imported to reduce initial JS.
+const Counters = dynamic(() => import("@/components/Counters"));
+const Philosophy = dynamic(() => import("@/components/Philosophy"));
+const MilestonesTimeline = dynamic(() => import("@/components/MilestonesTimeline"));
+const TeamShowcase = dynamic(() => import("@/components/TeamShowcase"));
+const Footer = dynamic(() => import("@/components/Footer"));
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 const values = [
   {
     title: "Speed",
-    desc: "We ship fast without cutting corners. AI-augmented workflows mean 40% faster delivery.",
+    desc: "We deliver in weeks, not months. Your product goes live sooner so you can start earning sooner.",
     icon: (
       <>
         <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
@@ -24,7 +26,7 @@ const values = [
   },
   {
     title: "Quality",
-    desc: "Type-safe code, 80%+ test coverage, Lighthouse 90+ scores. We hold ourselves to a high bar.",
+    desc: "Every project is built to the highest standard fast, reliable, and ready for growth.",
     icon: (
       <>
         <path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7l3-7z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
@@ -34,7 +36,7 @@ const values = [
   },
   {
     title: "Transparency",
-    desc: "Fixed scope, clear milestones, no surprise invoices. You always know what's shipping and when.",
+    desc: "Fixed budget, clear milestones, no surprise invoices. You always know what's happening and when.",
     icon: (
       <>
         <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8" />
@@ -45,7 +47,7 @@ const values = [
   },
   {
     title: "Partnership",
-    desc: "You own 100% of the code. No lock-in, no black boxes. We win when you raise.",
+    desc: "You own everything. No lock-in, no black boxes. We win when your business grows.",
     icon: (
       <>
         <path d="M16 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3z" stroke="currentColor" strokeWidth="1.8" />
@@ -86,7 +88,7 @@ export default function AboutPage() {
             transition={{ duration: 0.8, ease: EASE, delay: 0.1 }}
             className="mx-auto mt-4 max-w-2xl text-[32px] font-medium leading-[1.05] tracking-tight text-[#202342] dark:text-white sm:text-[48px] sm:tracking-[-1.5px]"
           >
-            We build digital experiences that matter
+            We help businesses grow online
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
@@ -94,8 +96,9 @@ export default function AboutPage() {
             transition={{ duration: 0.8, ease: EASE, delay: 0.2 }}
             className="mx-auto mt-4 max-w-md text-sm text-[#4e516a] dark:text-white/60 sm:text-base"
           >
-            A creative partner for ambitious businesses. We blend strategy,
-            design, and technology to craft products that deliver real results.
+            A creative partner for ambitious businesses. We turn your website
+            into your best salesperson attracting customers, building trust,
+            and driving revenue.
           </motion.p>
         </div>
       </section>
@@ -111,25 +114,27 @@ export default function AboutPage() {
             className="space-y-6 text-[15px] leading-relaxed text-[#4e516a] dark:text-white/70 sm:text-base"
           >
             <p>
-              We started as a two-person team with a simple belief: great
-              software shouldn&apos;t take 16 weeks and a quarter-million
-              dollars to build. AI changed the math. By handing the boring
-              stuff — boilerplate, testing, code review — to AI tooling, our
-              senior engineers focus on what actually matters: auth, payments,
-              data, and the flows investors click through.
+              We started with a simple belief: great digital products
+              shouldn't take 16 weeks and a quarter-million dollars to
+              build. And they shouldn't require a computer science degree
+              to understand. We cut the build time by 40% so you can start
+              generating revenue sooner because every week your product
+              isn't live is revenue you're leaving on the table.
             </p>
             <p>
-              Today we&apos;re a full-service digital agency covering frontend,
-              backend, design, and motion. We&apos;ve shipped 150+ projects for
-              clients ranging from pre-seed founders to established brands. Our
-              approach is simple: fixed scope, milestone-based payments, and
-              100% code ownership from day one. No lock-in, no surprises.
+              Today we're a full-service digital agency covering websites,
+              platforms, branding, and customer experience design. We've
+              helped businesses launch online stores, booking platforms,
+              customer portals, and brand identities that make customers
+              choose them over competitors. Our approach is simple: fixed
+              budget, clear milestones, and you own everything from day one.
+              No lock-in, no surprises.
             </p>
             <p>
-              We win when you raise. That&apos;s not a tagline — it&apos;s how
-              we structure our pricing, our milestones, and our relationship.
-              Your success is our success, and the math is set up for you, not
-              against you.
+              We win when your business grows. That's not a tagline —
+              it's how we structure our pricing, our milestones, and our
+              relationship. Your success is our success, and the math is set
+              up for you, not against you.
             </p>
           </motion.div>
         </div>
@@ -212,11 +217,11 @@ export default function AboutPage() {
           className="mx-auto max-w-2xl px-5 text-center sm:px-6"
         >
           <h2 className="text-[28px] font-medium tracking-tight text-[#202342] dark:text-white sm:text-[36px]">
-            Ready to work together?
+            Ready to grow together?
           </h2>
           <p className="mx-auto mt-4 max-w-md text-sm text-[#4e516a] dark:text-white/60 sm:text-base">
-            Let&apos;s talk about your project. We&apos;ll get back to you
-            within 24 hours.
+            Let&apos;s talk about your business. We&apos;ll get back to you
+            within 24 hours with ideas on how to help you grow.
           </p>
           <div className="mt-8 flex justify-center">
             <PixelButton href="/contact">Start a project</PixelButton>

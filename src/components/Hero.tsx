@@ -123,8 +123,9 @@ export default function Hero() {
           variants={item}
           className="mx-auto max-w-[400px] text-sm leading-[150%] text-[#4e516a] dark:text-[#a8acc4] sm:max-w-[580px] sm:text-lg sm:leading-[130%]"
         >
-          A creative partner for ambitious businesses. We blend strategy, design,
-          and technology to craft digital experiences that deliver real results.
+          Your website should be your best salesperson working around the
+          clock to turn visitors into customers. We make that happen with
+          strategy, design, and technology that delivers real revenue.
         </motion.p>
 
         <motion.div
@@ -144,13 +145,13 @@ export default function Hero() {
                 className="block h-5 leading-5 text-sm font-medium text-white dark:text-[#202342] transition-all duration-1000 group-hover:-translate-y-full group-hover:scale-110 group-hover:opacity-0"
                 style={{ transitionTimingFunction: EASE }}
               >
-                Start Project
+                Get Started
               </span>
               <span
                 className="absolute left-0 top-full block h-5 origin-bottom scale-90 leading-5 text-sm font-medium text-white dark:text-[#202342] transition-all duration-1000 group-hover:-translate-y-full group-hover:scale-100"
                 style={{ transitionTimingFunction: EASE }}
               >
-                Start Project
+                Get Started
               </span>
             </span>
             <span className="relative z-10 hidden h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-white dark:bg-[#202342] lg:flex">
@@ -209,7 +210,7 @@ export default function Hero() {
             <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#fff0f5] text-[#db2777] dark:bg-white/10 dark:text-[#f472b6] sm:h-9 sm:w-9">
               <ChatIcon />
             </div>
-            <span className="text-xs font-medium text-[#202342] dark:text-white sm:text-sm">Always Supported</span>
+            <span className="text-xs font-medium text-[#202342] dark:text-white sm:text-sm">Grows Your Revenue</span>
           </div>
         </motion.div>
       </motion.div>

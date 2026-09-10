@@ -1,14 +1,20 @@
+import dynamic from "next/dynamic";
 import Hero from "@/components/Hero";
 import TeamMarquee from "@/components/TeamMarquee";
-import Counters from "@/components/Counters";
-import ClientLogos from "@/components/ClientLogos";
-import Projects from "@/components/Projects";
-import WhatWeBuild from "@/components/WhatWeBuild";
-import Solution from "@/components/Solution";
-import ComparisonTable from "@/components/ComparisonTable";
-import ServicesPreview from "@/components/ServicesPreview";
-import PricingTiers from "@/components/PricingTiers";
-import Footer from "@/components/Footer";
+
+// Below-the-fold sections are dynamically imported so they don't block
+// the initial page load. Each becomes a separate chunk that loads on
+// demand as the user scrolls toward it. Zero visual change the
+// components render identically, just their JS is deferred.
+const Counters = dynamic(() => import("@/components/Counters"));
+const ClientLogos = dynamic(() => import("@/components/ClientLogos"));
+const Projects = dynamic(() => import("@/components/Projects"));
+const WhatWeBuild = dynamic(() => import("@/components/WhatWeBuild"));
+const Solution = dynamic(() => import("@/components/Solution"));
+const ComparisonTable = dynamic(() => import("@/components/ComparisonTable"));
+const ServicesPreview = dynamic(() => import("@/components/ServicesPreview"));
+const PricingTiers = dynamic(() => import("@/components/PricingTiers"));
+const Footer = dynamic(() => import("@/components/Footer"));
 
 export default function Home() {
   return (

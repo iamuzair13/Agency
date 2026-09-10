@@ -28,7 +28,7 @@ type PixelButtonProps = {
 };
 
 /**
- * PixelButton — replicates the hero section's pixel-perfect button animation:
+ * PixelButton replicates the hero section's pixel-perfect button animation:
  * 1. Background fill sweep (scale-x-0 → scale-x-100, left to right)
  * 2. Text slide-up (two copies, first slides up & fades, second slides in from below)
  * 3. Arrow circle slide (arrow slides out right, duplicate slides in from left)
@@ -83,7 +83,7 @@ const PixelButton = forwardRef<HTMLAnchorElement, PixelButtonProps>(
       <Link
         ref={ref}
         {...linkProps}
-        className={`group relative inline-flex h-12 items-center justify-center gap-3 overflow-hidden rounded-full py-3 pl-7 pr-2 text-sm font-bold tracking-tight sm:h-auto ${bg} ${className}`}
+        className={`group relative inline-flex h-12 items-center justify-center gap-3 overflow-hidden rounded-full py-3 text-sm font-bold tracking-tight sm:h-auto ${hasArrow ? "pl-7 pr-2" : "px-7"} ${bg} ${className}`}
       >
         {/* 1. Background fill sweep (primary only) */}
         {isPrimary && (

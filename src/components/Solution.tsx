@@ -22,8 +22,8 @@ const solutions = [
         clipRule="evenodd"
       />
     ),
-    title: "AI-augmented speed",
-    desc: "Cuts build time by ~40%. You launch in 6 weeks, not 16, no all-nighters, no 'just one more sprint.' AI handles the boilerplate so our senior devs focus on the hard parts: auth, payments, data, and the flows investors actually click through.",
+    title: "Launch in weeks, not months",
+    desc: "You go live in 6 weeks, not 16. No endless meetings, no 'just one more revision.' We cut the build time by 40% so you can start generating revenue sooner. Every week your product isn't live is revenue you're leaving on the table.",
   },
   {
     num: "02",
@@ -41,8 +41,8 @@ const solutions = [
         clipRule="evenodd"
       />
     ),
-    title: "Fixed scope, zero surprises",
-    desc: "One quote. No mid-build invoices, no surprise change orders, no scope creep crashing the party in week 4. We lock the build into clear milestones up front, what's shipping, when, and exactly what you'll pay. Something changes? You decide before a single line of code is written.",
+    title: "Fixed budget, guaranteed delivery",
+    desc: "One quote. No mid-project invoices, no surprise charges, no scope creep. We lock the deliverables and timeline up front what you're getting, when, and exactly what you'll pay. Something changes? You decide before any work starts.",
   },
   {
     num: "03",
@@ -60,8 +60,8 @@ const solutions = [
         clipRule="evenodd"
       />
     ),
-    title: "You own 100% of the code",
-    desc: "Full repo handover on day one, clean GitHub history, your accounts, your infra, your IP. No vendor lock-in, no 'agency edition' frameworks, no hostage situations if you take it in-house later. Investors get to do diligence on a real codebase, not a black box.",
+    title: "You own everything",
+    desc: "Full handover on day one your product, your data, your customers, your brand. No vendor lock-in, no hidden dependencies, no hostage situations if you take it in-house later. What we build is yours, completely and forever.",
   },
   {
     num: "04",
@@ -79,8 +79,8 @@ const solutions = [
         clipRule="evenodd"
       />
     ),
-    title: "Founder-friendly pricing",
-    desc: "Built for pre-seed budgets, milestone-based payments, no $50K deposits, no 12-month retainers. You pay as the product takes shape, and you can stop at any milestone if priorities shift. We win when you raise, so the math is set up for you, not against you.",
+    title: "Pricing that grows with you",
+    desc: "Built for real business budgets. Milestone-based payments, no massive deposits, no long-term contracts. You pay as your product takes shape, and you can pause at any milestone if priorities shift. We win when your business grows so the math is set up for you, not against you.",
   },
 ];
 
@@ -108,19 +108,18 @@ export default function Solution() {
 
                 {/* Heading */}
                 <h2 className="max-w-xl text-[1.75rem] font-medium leading-[0.98] tracking-tight text-[#111] dark:text-white sm:text-[2.5rem] md:text-[3rem]">
-                  We build your MVP, fast, clean, and ready for the big meeting.
+                  We build your product, fast, clean, and ready for customers.
                 </h2>
 
                 {/* Paragraph */}
                 <p className="mt-5 max-w-md text-[14px] leading-relaxed text-neutral-600 dark:text-white/65 sm:mt-6 sm:text-[15px] md:mt-7 md:text-base">
                   <span className="font-medium text-[#111] dark:text-white">
-                    AI-native
+                    Smart delivery
                   </span>{" "}
-                  means our engineers hand the boring stuff, boilerplate,
-                  testing, code review, to AI tooling, so a 2-person team ships
-                  what used to take five. Senior-level output at a
-                  startup-friendly price. The robots do the grunt work; the
-                  humans do the thinking.
+                  means we handle the heavy lifting so you can focus on running
+                  your business. A small, senior team ships what used to take an
+                  entire agency at a fraction of the cost and timeline. We do
+                  the work; you see the results.
                 </p>
 
                 {/* CTA */}

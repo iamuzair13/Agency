@@ -26,15 +26,15 @@ export default function ServicesPreview() {
             What We Do
           </span>
           <h2 className="mx-auto mt-4 max-w-2xl text-[28px] font-medium leading-[1.05] tracking-tight text-[#202342] dark:text-white sm:text-[40px] sm:tracking-[-1.5px] lg:text-[48px]">
-            Services that ship results
+            Solutions that deliver results
           </h2>
           <p className="mx-auto mt-4 max-w-md text-sm text-[#4e516a] dark:text-white/60 sm:text-base">
-            From frontend pixels to backend infrastructure — we cover the full
-            spectrum of digital product development.
+            From websites that convert to platforms that scale we cover the
+            full spectrum of what your business needs to grow online.
           </p>
         </motion.div>
 
-        {/* Service cards — same 3D flip cards as the services page */}
+        {/* Service cards same 3D flip cards as the services page */}
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           {previewServices.map((s, i) => (
             <ServiceCard key={i} s={s} index={i} />

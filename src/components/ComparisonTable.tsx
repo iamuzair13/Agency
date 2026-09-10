@@ -9,36 +9,36 @@ const columns = [
     title: "Your Agency Name",
     highlight: true,
     points: [
-      "Senior engineers from day one — every name on your team has shipped at scale.",
-      "Working code in week one. Sharp scoping, fewer hand-offs.",
-      "Type-safe by default, tested where it counts, hardened infra.",
-      "One squad, one Slack channel, one accountable lead.",
-      "Live US / UK working hours — same standups, same sprint.",
-      "Fixed scope, fixed price. No padded hours.",
+      "Senior experts from day one your project is handled by people who've delivered hundreds of times.",
+      "See progress in week one. No endless meetings, no mystery, no waiting.",
+      "Your product is built to last fast, secure, and ready for growth.",
+      "One team, one point of contact, one person accountable for your success.",
+      "Live when you need us quick responses, not 12-hour reply windows.",
+      "Fixed budget, fixed timeline. No padded hours, no surprise invoices.",
     ],
   },
   {
     title: "Typical Agencies",
     highlight: false,
     points: [
-      "Juniors quietly swapped in once the engagement starts.",
-      "Months of discovery decks before a single line of code.",
-      "Hand-off projects riddled with undocumented tech debt.",
-      "Five vendors pointing fingers when something breaks.",
-      "Async-only with 12-hour reply windows.",
-      "Opaque retainers and surprise invoices at month-end.",
+      "Junior staff quietly swapped in once the contract is signed.",
+      "Months of meetings and decks before anything actually gets built.",
+      "Projects handed over riddled with problems you discover later.",
+      "Multiple vendors pointing fingers when something breaks.",
+      "Slow responses with 12-hour reply windows and endless email chains.",
+      "Opaque retainers and surprise invoices showing up at month-end.",
     ],
   },
   {
     title: "Hiring In-House",
     highlight: false,
     points: [
-      "6+ months to find and close a senior engineer.",
-      "Onboarding eats your first quarter of productivity.",
-      "Single hire = single point of failure on the codebase.",
-      "Permanent salary, benefits, and equity overhead.",
-      "Hard to scale capacity up or down with demand.",
-      "Recruiting overhead pulls you off shipping product.",
+      "6+ months to find and hire the right people for your team.",
+      "Onboarding eats your first quarter of productivity and momentum.",
+      "One hire leaving means your entire project stalls or breaks.",
+      "Permanent salaries, benefits, and overhead whether you're building or not.",
+      "Hard to scale your team up or down as your needs change.",
+      "Recruiting pulls you away from actually running your business.",
     ],
   },
 ];
@@ -72,7 +72,7 @@ export default function ComparisonTable() {
             transition={{ duration: 0.7, ease: EASE }}
             className="inline-block text-xs font-medium uppercase tracking-[0.2em] text-[#4e516a] dark:text-white/50"
           >
-            The unfair advantage
+            How We Work
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
@@ -90,9 +90,9 @@ export default function ComparisonTable() {
             transition={{ duration: 0.7, ease: EASE, delay: 0.2 }}
             className="mt-4 text-sm text-[#4e516a] dark:text-white/60 sm:text-base"
           >
-            Senior operators from day one. Sharp scoping, hardened code, fixed
-            pricing. The agency model — rebuilt for teams that need to ship more
-            than they need to talk about shipping.
+            Senior experts from day one. Clear timelines, fixed pricing, and
+            pricing. The agency model rebuilt for teams that need to ship more
+            that need to grow more than they need to talk about growing.
           </motion.p>
         </div>
 
@@ -113,7 +113,7 @@ export default function ComparisonTable() {
             >
               <div className="mb-6 flex items-center gap-3">
                 <h3
-                  className={`text-lg font-medium ${
+                  className={`text-lg font-medium tracking-wide ${
                     col.highlight
                       ? "text-[#4555fd] dark:text-[#6b78ff]"
                       : "text-[#202342] dark:text-white"

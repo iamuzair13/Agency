@@ -6,9 +6,9 @@ import { motion, useInView } from "framer-motion";
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 const counters = [
-  { value: 150, suffix: "+", label: "Projects Delivered" },
-  { value: 98, suffix: "%", label: "Client Retention" },
-  { value: 12, suffix: "M", label: "Revenue Generated" },
+  { value: 6, suffix: " wks", label: "Average Launch Time" },
+  { value: 100, suffix: "%", label: "You Own Everything" },
+  { value: 40, suffix: "%", label: "Faster Delivery" },
   { value: 24, suffix: "/7", label: "Support Available" },
 ];
 

@@ -1,24 +1,47 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 const projects = [
-  { src: "/images/projects/image-1.webp", title: "Nurture leads with personalized email marketing automation", tag: "Email Marketing" },
-  { src: "/images/projects/image-2.webp", title: "Generate demand through targeted LinkedIn ad campaigns", tag: "LinkedIn Ads" },
-  { src: "/images/projects/image-3.webp", title: "Capture leads using gated whitepapers and reports", tag: "Gated Content" },
-  { src: "/images/projects/image-4.webp", title: "Boost conversions via free trials and demos", tag: "SaaS Funnel" },
-  { src: "/images/projects/image-5.webp", title: "Expand reach through strategic industry partner programs", tag: "Partner Outreach" },
+  { src: "/images/projects/njsalon.webp", title: "NJ Beauty Bliss Online booking platform that fills salon chairs", tag: "Booking System", href: "https://njsalon-blue.vercel.app" },
+  { src: "/images/projects/agency.webp", title: "Agency Website A marketing site that converts visitors into clients", tag: "Marketing Site", href: "https://agency-eight-alpha.vercel.app" },
+  { src: "/images/projects/ethical-approval.webp", title: "Ethical Approval Admin dashboard that streamlines review workflows", tag: "Business System", href: "https://ethical-approval.vercel.app" },
+  { src: "/images/projects/pgsqaf.webp", title: "PGSQAF Quality appraisal framework for academic institutions", tag: "Process Tool", href: "https://github.com/iamuzair13/pgsqaf" },
+  { src: "/images/projects/alumni-portal.webp", title: "Alumni Portal University network platform with admin dashboard", tag: "Community Platform", href: "https://github.com/iamuzair13/alumni-portal" },
+  { src: "/images/projects/portfolio.webp", title: "Portfolio Personal brand site that wins client trust", tag: "Brand Site", href: "https://github.com/iamuzair13/Portfolio" },
+  { src: "/images/projects/my-work.webp", title: "My Work Project showcase gallery for client presentations", tag: "Showcase", href: "https://github.com/iamuzair13/my-work" },
 ];
 
 // Duplicate the list so the marquee loops seamlessly.
 const loop = [...projects, ...projects];
 
 export default function Projects() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Pause the CSS marquee animation when off-screen.
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const track = el.querySelector<HTMLElement>(".marquee-track");
+    if (!track) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        track.style.animationPlayState = entry.isIntersecting ? "running" : "paused";
+      },
+      { threshold: 0 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       className="relative overflow-hidden bg-gradient-to-b from-white via-[#f5f6fa] to-white dark:bg-gradient-to-b dark:from-[#0f1020] dark:via-[#12132a] dark:to-[#0f1020] pt-12 pb-16 sm:pt-20 sm:pb-24 lg:pt-24 lg:pb-28"
       aria-label="Project highlights"
     >
@@ -41,7 +64,7 @@ export default function Projects() {
           transition={{ duration: 0.9, ease: EASE }}
           className="text-[22px] leading-[115%] tracking-[-0.6px] text-[#202342] dark:text-white sm:text-[36px] sm:tracking-[-1.2px] lg:text-[56px] lg:tracking-[-1.76px]"
         >
-          We have build
+          Work that speaks for itself
         </motion.h3>
         <motion.p
           initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
@@ -50,8 +73,8 @@ export default function Projects() {
           transition={{ duration: 0.9, ease: EASE, delay: 0.15 }}
           className="mx-auto mt-2 max-w-[320px] text-sm leading-[150%] text-[#4e516a] dark:text-[#a8acc4] sm:mt-4 sm:max-w-[560px] sm:text-base lg:text-lg"
         >
-          We go beyond traditional marketing. We deliver value with cutting-edge,
-          data-driven strategies.
+          Real products solving real business problems. Each one designed to
+          attract customers, streamline operations, and drive revenue.
         </motion.p>
       </div>
 
@@ -65,9 +88,13 @@ export default function Projects() {
       >
         <div className="marquee-track flex w-max items-stretch pl-3 sm:pl-6">
           {loop.map((project, i) => (
-            <article
+            <Link
+              href={project.href}
               key={i}
-              className="group relative mr-3 w-[240px] shrink-0 sm:mr-5 sm:w-[380px] lg:mr-6 lg:w-[480px]"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`View project: ${project.title}`}
+              className="group relative mr-3 block w-[240px] shrink-0 sm:mr-5 sm:w-[380px] lg:mr-6 lg:w-[480px]"
             >
               {/* image card */}
               <div className="relative h-[300px] overflow-hidden rounded-xl ring-1 ring-black/10 dark:ring-white/10 sm:h-[460px] sm:rounded-2xl lg:h-[560px] lg:rounded-3xl">
@@ -75,6 +102,8 @@ export default function Projects() {
                   src={project.src}
                   alt={project.title}
                   fill
+                  priority={i < 2}
+                  loading={i < 2 ? "eager" : "lazy"}
                   className="object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-110"
                   sizes="(max-width: 640px) 240px, (max-width: 1024px) 380px, 480px"
                 />
@@ -95,7 +124,7 @@ export default function Projects() {
                   {project.tag}
                 </span>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
       </motion.div>

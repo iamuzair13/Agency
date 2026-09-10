@@ -7,37 +7,37 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 const milestones = [
   {
     year: "2021",
-    title: "Two people, one laptop",
-    desc: "Founded as a two-person team with a simple thesis: AI changes the economics of software. First client shipped in 3 weeks.",
+    title: "It started with an idea",
+    desc: "Founded with a simple belief: great digital products shouldn't take months and cost a fortune. First client launched in 3 weeks.",
     stat: "1st client",
     color: "#4555fd",
   },
   {
     year: "2022",
     title: "Word gets around",
-    desc: "Referrals drove 80% of new business. We hit 30 projects shipped and hired our first designer and DevOps engineer.",
-    stat: "30 projects",
+    desc: "Happy clients referred more businesses. We grew our team and started offering branding and design alongside websites.",
+    stat: "Growing",
     color: "#7c3aed",
   },
   {
     year: "2023",
-    title: "Full-service, fixed scope",
-    desc: "Expanded into branding, motion, and mobile. Locked in our fixed-scope pricing model — no hourly billing, ever.",
-    stat: "80 projects",
+    title: "Full-service partner",
+    desc: "Expanded into complete digital solutions websites, platforms, branding, and customer experience design. Fixed pricing, always.",
+    stat: "Full service",
     color: "#db2777",
   },
   {
     year: "2024",
-    title: "The AI-native pivot",
-    desc: "Rebuilt our entire workflow around AI-augmented development. Build times dropped 40%. Lighthouse scores hit 90+ as a standard.",
-    stat: "120 projects",
+    title: "Faster, better delivery",
+    desc: "Improved our process to deliver 40% faster without cutting quality. Businesses started launching sooner and seeing results sooner.",
+    stat: "40% faster",
     color: "#ea580c",
   },
   {
     year: "2025",
-    title: "150 and counting",
-    desc: "8-person senior team across 6 time zones. Clients ranging from pre-seed founders to Series B brands. Still no ping-pong table.",
-    stat: "150+ shipped",
+    title: "Still growing",
+    desc: "A dedicated team helping businesses across industries. From local salons to academic institutions we help them all grow online.",
+    stat: "Growing",
     color: "#059669",
   },
 ];
@@ -68,7 +68,7 @@ export default function MilestonesTimeline() {
             Our journey
           </span>
           <h2 className="mt-4 text-[28px] font-medium leading-[1.05] tracking-tight text-[#202342] dark:text-white sm:text-[40px] sm:tracking-[-1.5px] lg:text-[48px]">
-            From two people to 150+ projects.
+            From a simple idea to a growing team.
           </h2>
           <p className="mt-4 text-sm text-[#4e516a] dark:text-white/60 sm:text-base">
             No funding rounds, no pivots to crypto, no pivot to AI consulting

@@ -11,47 +11,47 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 const caseStudies = [
   {
     client: "LeadFlow",
-    category: "SaaS Platform",
-    title: "From idea to seed round in 5 weeks.",
-    desc: "We built a B2B lead-scoring MVP that helped LeadFlow close their $2M seed round. Full-stack Next.js app with real-time enrichment, AI scoring, and a Stripe-billed dashboard — shipped clean enough to pass investor diligence.",
+    category: "Online Platform",
+    title: "From idea to paying customers in 5 weeks.",
+    desc: "We built a lead-scoring platform that helps sales teams find their best prospects automatically. The platform went from concept to launch in 5 weeks clean enough to pass investor scrutiny and smart enough to start generating revenue from day one.",
     image: "/images/projects/image-1.webp",
     metrics: [
       { value: "5 wks", label: "Idea to launch" },
-      { value: "$2M", label: "Seed raised" },
-      { value: "3x", label: "Open rate lift" },
-      { value: "95", label: "Lighthouse score" },
+      { value: "3x", label: "More qualified leads" },
+      { value: "95", label: "Customer satisfaction" },
+      { value: "Day 1", label: "Revenue ready" },
     ],
-    tags: ["Next.js", "PostgreSQL", "Stripe", "OpenAI"],
+    tags: ["Lead Generation", "Sales Platform", "Automated Scoring", "Subscription Billing"],
     accent: "#4555fd",
   },
   {
     client: "DataPulse",
-    category: "Web App",
-    title: "Lighthouse 40 → 95 in one rebuild.",
-    desc: "A performance-focused rebuild of DataPulse's analytics dashboard. We cut bundle size by 70%, moved to server components, and hit 95+ Lighthouse across the board — lifting trial-to-paid conversion from 8% to 22%.",
+    category: "Customer Portal",
+    title: "Trial-to-paid conversion jumped from 8% to 22%.",
+    desc: "We rebuilt DataPulse's customer portal to be faster, clearer, and easier to use. The result: customers stopped bouncing and started buying. Trial-to-paid conversion nearly tripled, and customer complaints dropped to almost zero.",
     image: "/images/projects/image-4.webp",
     metrics: [
-      { value: "95+", label: "Lighthouse" },
-      { value: "70%", label: "Bundle cut" },
-      { value: "22%", label: "Trial → paid" },
-      { value: "10K", label: "Concurrent users" },
+      { value: "22%", label: "Trial to paid" },
+      { value: "3x", label: "Conversion lift" },
+      { value: "10K", label: "Active users" },
+      { value: "Zero", label: "Complaints" },
     ],
-    tags: ["Next.js", "RSC", "TypeScript", "AWS"],
+    tags: ["Customer Portal", "Analytics Dashboard", "User Experience", "Conversion"],
     accent: "#7c3aed",
   },
   {
     client: "Nimbus",
-    category: "Branding + Web",
-    title: "A brand system that scaled to 12 markets.",
-    desc: "Complete brand identity and marketing site for Nimbus's Series A launch — logo, color system, typography, and a headless Next.js site with a 3D product configurator. Rolled out across 12 regional markets in 3 weeks.",
+    category: "Brand & Website",
+    title: "A brand that scaled to 12 markets in 3 weeks.",
+    desc: "Complete brand identity and marketing website for Nimbus's expansion launch. We created a brand system that looks premium in every market logo, colors, messaging, and a website that turns visitors into inquiries. Rolled out across 12 regions without a hitch.",
     image: "/images/projects/image-3.webp",
     metrics: [
       { value: "12", label: "Markets" },
       { value: "3 wks", label: "Rollout" },
-      { value: "3D", label: "Configurator" },
+      { value: "2x", label: "Inquiry rate" },
       { value: "100%", label: "Brand coverage" },
     ],
-    tags: ["Figma", "Three.js", "Next.js", "Sanity"],
+    tags: ["Brand Identity", "Marketing Website", "Multi-Market", "Lead Generation"],
     accent: "#db2777",
   },
 ];
@@ -75,11 +75,11 @@ export default function CaseStudySpotlight() {
             Featured work
           </span>
           <h2 className="mt-4 text-[28px] font-medium leading-[1.05] tracking-tight text-[#202342] dark:text-white sm:text-[40px] sm:tracking-[-1.5px] lg:text-[48px]">
-            Case studies with numbers.
+            Real businesses. Real results.
           </h2>
           <p className="mt-4 text-sm text-[#4e516a] dark:text-white/60 sm:text-base">
-            Not just pretty screenshots — real products, real metrics, real
-            outcomes. Switch between stories to see the impact.
+            Not just pretty screenshots real products solving real business
+            problems. Switch between stories to see the impact.
           </p>
         </motion.div>
 
@@ -117,6 +117,7 @@ export default function CaseStudySpotlight() {
                 src={cs.image}
                 alt={cs.client}
                 fill
+                priority
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
               />
@@ -190,7 +191,7 @@ export default function CaseStudySpotlight() {
 
               {/* CTA */}
               <div className="mt-8 w-fit">
-                <PixelButton href="/contact">Start a project like this</PixelButton>
+                <PixelButton href="/contact">Grow my business like this</PixelButton>
               </div>
             </div>
           </motion.div>

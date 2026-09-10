@@ -3,28 +3,31 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import PixelButton from "@/components/PixelButton";
 import { motion, AnimatePresence } from "framer-motion";
-import Counters from "@/components/Counters";
-import ClientLogos from "@/components/ClientLogos";
-import CaseStudySpotlight from "@/components/CaseStudySpotlight";
-import ProjectTimeline from "@/components/ProjectTimeline";
-import Footer from "@/components/Footer";
+
+// Below-the-fold sections are dynamically imported to reduce initial JS.
+const Counters = dynamic(() => import("@/components/Counters"));
+const ClientLogos = dynamic(() => import("@/components/ClientLogos"));
+const CaseStudySpotlight = dynamic(() => import("@/components/CaseStudySpotlight"));
+const ProjectTimeline = dynamic(() => import("@/components/ProjectTimeline"));
+const Footer = dynamic(() => import("@/components/Footer"));
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 const allProjects = [
-  { src: "/images/projects/image-1.webp", title: "Nurture leads with personalized email marketing automation", tag: "Email Marketing", category: "Marketing", desc: "A drip campaign system that boosted open rates by 3x and converted 40% more leads for a B2B SaaS client." },
-  { src: "/images/projects/image-2.webp", title: "Generate demand through targeted LinkedIn ad campaigns", tag: "LinkedIn Ads", category: "Marketing", desc: "LinkedIn ad strategy that generated 500+ qualified leads in 30 days at $12 CPL for a fintech startup." },
-  { src: "/images/projects/image-3.webp", title: "Capture leads using gated whitepapers and reports", tag: "Gated Content", category: "Content", desc: "A content gating system with lead scoring that increased MQL conversion by 65% for a consulting firm." },
-  { src: "/images/projects/image-4.webp", title: "Boost conversions via free trials and demos", tag: "SaaS Funnel", category: "Web App", desc: "A self-serve trial funnel with in-app onboarding that lifted trial-to-paid conversion from 8% to 22%." },
-  { src: "/images/projects/image-5.webp", title: "Expand reach through strategic industry partner programs", tag: "Partner Outreach", category: "Strategy", desc: "A partner portal and co-marketing framework that added 12 channel partners and $1.2M in pipeline." },
-  { src: "/images/projects/image-1.webp", title: "Brand identity for a Series A fintech startup", tag: "Branding", category: "Design", desc: "Complete brand system — logo, color palette, typography, and guidelines — for a fintech startup's Series A launch." },
-  { src: "/images/projects/image-2.webp", title: "E-commerce platform with real-time inventory", tag: "Full Stack", category: "Web App", desc: "A Next.js + PostgreSQL e-commerce platform handling 10K concurrent users with real-time stock updates." },
-  { src: "/images/projects/image-3.webp", title: "Interactive product demo with 3D configurator", tag: "3D / WebGL", category: "Design", desc: "A Three.js-powered product configurator letting users customize and preview products in real-time before purchase." },
+  { src: "/images/projects/njsalon.webp", title: "NJ Beauty Bliss Salon Booking Platform", tag: "Booking System", category: "Web App", desc: "An online booking platform for a premium salon. Customers can browse services, book appointments, and pay online filling chairs and reducing no-shows.", href: "https://njsalon-blue.vercel.app" },
+  { src: "/images/projects/agency.webp", title: "Agency Marketing Website That Converts", tag: "Marketing Site", category: "Web App", desc: "A high-performance marketing website designed to turn visitors into clients. Premium animations, smooth scrolling, and clear calls-to-action that drive inquiries.", href: "https://agency-eight-alpha.vercel.app" },
+  { src: "/images/projects/ethical-approval.webp", title: "Ethical Approval Review Workflow Dashboard", tag: "Business System", category: "Web App", desc: "An admin dashboard that streamlines ethical review workflows for institutions. Reduces manual paperwork, speeds up approvals, and keeps everything organized in one place.", href: "https://ethical-approval.vercel.app" },
+  { src: "/images/projects/pgsqaf.webp", title: "PGSQAF Academic Quality Framework", tag: "Process Tool", category: "Web App", desc: "A quality appraisal framework for academic institutions. Systematic evaluation, monitoring, and reporting of program quality replacing spreadsheets with a clear, visual dashboard.", href: "https://github.com/iamuzair13/pgsqaf" },
+  { src: "/images/projects/alumni-portal.webp", title: "Alumni Portal University Network", tag: "Community Platform", category: "Web App", desc: "A university alumni network platform with admin dashboard. Helps institutions stay connected with graduates, track engagement, and manage alumni data in one place.", href: "https://github.com/iamuzair13/alumni-portal" },
+  { src: "/images/projects/portfolio.webp", title: "Portfolio Personal Brand Website", tag: "Brand Site", category: "Web App", desc: "A personal brand website designed to win client trust. Smooth animations, responsive design, and a professional presentation that makes a lasting impression.", href: "https://github.com/iamuzair13/Portfolio" },
+  { src: "/images/projects/my-work.webp", title: "My Work Project Showcase Gallery", tag: "Showcase", category: "Web App", desc: "A project showcase gallery for client presentations. Designed to highlight work professionally and make it easy for potential clients to see exactly what's possible.", href: "https://github.com/iamuzair13/my-work" },
+  { src: "/images/projects/adapt-test.webp", title: "Adapt Test Assessment Platform", tag: "Business Tool", category: "Web App", desc: "An adaptive assessment platform with dynamic question flows and real-time scoring. Designed to make evaluations faster, fairer, and easier to manage.", href: "https://github.com/iamuzair13/adapt-test" },
 ];
 
-const categories = ["All", "Marketing", "Web App", "Design", "Content", "Strategy"];
+const categories = ["All", "Web App"];
 
 export default function WorkPage() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -70,8 +73,8 @@ export default function WorkPage() {
             transition={{ duration: 0.8, ease: EASE, delay: 0.2 }}
             className="mx-auto mt-4 max-w-md text-sm text-[#4e516a] dark:text-white/60 sm:text-base"
           >
-            A selection of projects we&apos;ve crafted for clients across
-            industries. From marketing campaigns to full-stack platforms.
+            Real products solving real business problems. Each one designed
+            to attract customers, streamline operations, and drive revenue.
           </motion.p>
 
           {/* Hero CTAs */}
@@ -81,8 +84,8 @@ export default function WorkPage() {
             transition={{ duration: 0.8, ease: EASE, delay: 0.3 }}
             className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4"
           >
-            <PixelButton href="/contact">Start a project</PixelButton>
-            <PixelButton href="/services" variant="secondary" showArrow={false}>View services</PixelButton>
+            <PixelButton href="/contact">Grow my business</PixelButton>
+            <PixelButton href="/services" variant="secondary" showArrow={false}>View solutions</PixelButton>
           </motion.div>
         </div>
       </section>
@@ -142,37 +145,40 @@ export default function WorkPage() {
                   transition={{ duration: 0.5, ease: EASE, delay: i * 0.05 }}
                   className="group relative overflow-hidden rounded-3xl bg-white shadow-lg dark:bg-white/5"
                 >
-                  {/* Image */}
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    <Image
-                      src={p.src}
-                      alt={p.title}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    {/* Hover overlay */}
-                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-gradient-to-t from-black/80 via-black/50 to-black/30 p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-                      <p className="text-center text-sm leading-relaxed text-white/90">
-                        {p.desc}
-                      </p>
-                      <span className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-bold text-[#202342] transition-transform duration-300 group-hover:scale-105">
-                        View project
-                        <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4">
-                          <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      </span>
+                  <Link href={p.href} target="_blank" rel="noopener noreferrer" aria-label={`View project: ${p.title}`}>
+                    {/* Image */}
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <Image
+                        src={p.src}
+                        alt={p.title}
+                        fill
+                        priority={i < 3}
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                      {/* Hover overlay */}
+                      <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-gradient-to-t from-black/80 via-black/50 to-black/30 p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                        <p className="text-center text-sm leading-relaxed text-white/90">
+                          {p.desc}
+                        </p>
+                        <span className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-bold text-[#202342] transition-transform duration-300 group-hover:scale-105">
+                          View project
+                          <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4">
+                            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                  {/* Info */}
-                  <div className="p-6">
-                    <span className="text-xs font-medium uppercase tracking-wide text-[#4555fd] dark:text-[#6b78ff]">
-                      {p.tag}
-                    </span>
-                    <h3 className="mt-2 text-base font-medium leading-snug text-[#202342] dark:text-white">
-                      {p.title}
-                    </h3>
-                  </div>
+                    {/* Info */}
+                    <div className="p-6">
+                      <span className="text-xs font-medium uppercase tracking-wide text-[#4555fd] dark:text-[#6b78ff]">
+                        {p.tag}
+                      </span>
+                      <h3 className="mt-2 text-base font-medium leading-snug text-[#202342] dark:text-white">
+                        {p.title}
+                      </h3>
+                    </div>
+                  </Link>
                 </motion.article>
               ))}
             </AnimatePresence>
@@ -193,15 +199,15 @@ export default function WorkPage() {
           className="mx-auto max-w-2xl px-5 text-center sm:px-6"
         >
           <h2 className="text-[28px] font-medium tracking-tight text-[#202342] dark:text-white sm:text-[36px]">
-            Have a project in mind?
+            Ready to grow your business?
           </h2>
           <p className="mx-auto mt-4 max-w-md text-sm text-[#4e516a] dark:text-white/60 sm:text-base">
-            Let&apos;s talk about how we can bring it to life — fast, clean,
-            and ready for the big meeting.
+            Let's talk about how we can help you attract more customers
+            and increase your revenue.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
-            <PixelButton href="/contact">Start a project</PixelButton>
-            <PixelButton href="/services" variant="secondary" showArrow={false}>Explore services</PixelButton>
+            <PixelButton href="/contact">Grow my business</PixelButton>
+            <PixelButton href="/services" variant="secondary" showArrow={false}>Explore solutions</PixelButton>
           </div>
         </motion.div>
       </section>

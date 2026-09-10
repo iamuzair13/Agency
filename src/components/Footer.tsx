@@ -11,8 +11,8 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 const mainLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/work", label: "Works" },
-  { href: "/services", label: "Services" },
+  { href: "/work", label: "Work" },
+  { href: "/services", label: "Solutions" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -43,17 +43,17 @@ export default function Footer() {
           className="text-center"
         >
           <span className="inline-block text-xs font-medium uppercase tracking-[0.2em] text-[#4e516a] transition-colors duration-500 dark:text-white/50">
-            Start building now
+            Start growing now
           </span>
           <h2 className="mx-auto mt-4 max-w-3xl text-[2rem] font-medium leading-[1.05] tracking-tight text-[#202342] transition-colors duration-500 dark:text-white sm:text-[2.75rem] md:text-[3.5rem] md:leading-[1.02]">
-            Site into something exceptional design
+            Turn your website into your best salesperson
           </h2>
           <p className="mx-auto mt-4 max-w-md text-sm text-[#4e516a] transition-colors duration-500 dark:text-white/50 sm:text-base">
-            Ready to see real results? Let&apos;s build your brand into
-            something unforgettable.
+            Ready to see real results? Let's turn your website into
+            a customer acquisition machine.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
-            <PixelButton href="/contact">Book a call</PixelButton>
+            <PixelButton href="/contact">Get started</PixelButton>
             <PixelButton href="/contact" variant="secondary" showArrow={false}>
               Let&apos;s Contact
             </PixelButton>
@@ -136,10 +136,10 @@ export default function Footer() {
           <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
             <div>
               <h4 className="text-sm font-medium text-[#202342] transition-colors duration-500 dark:text-white">
-                Newsletter for updates
+                Get growth tips
               </h4>
               <p className="mt-1 text-xs text-[#4e516a] transition-colors duration-500 dark:text-white/50">
-                Subscribe to get more updates
+                Monthly insights on growing your business online
               </p>
             </div>
             {subscribed ? (
@@ -208,7 +208,7 @@ export default function Footer() {
               {siteConfig.agencyName}
             </span>
           </div>
-          <p className="text-xs text-[#4e516a] transition-colors duration-500 dark:text-white/40">
+          <p className="text-xs text-[#4e516a] transition-colors duration-500 dark:text-white/40" suppressHydrationWarning>
             &copy; {new Date().getFullYear()} {siteConfig.agencyName}. All
             rights reserved.
           </p>

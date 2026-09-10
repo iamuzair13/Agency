@@ -78,7 +78,7 @@ export default function Header() {
           {/* center: nav menu (desktop only) */}
           <ul className="hidden flex-1 items-center justify-center gap-8 md:flex">
             <li><NavLink href="/">Home</NavLink></li>
-            <li><NavLink href="/services">Services</NavLink></li>
+            <li><NavLink href="/services">Solutions</NavLink></li>
             <li><NavLink href="/work">Work</NavLink></li>
             <li><NavLink href="/about">About</NavLink></li>
           </ul>
@@ -109,17 +109,17 @@ export default function Header() {
               </motion.div>
             </button>
 
-            {/* Start Project button - arrow only on mobile, full on desktop */}
+            {/* Get Started button - arrow only on mobile, full on desktop */}
             <Link
               href="/contact"
               className="group relative inline-flex h-8 items-center gap-1 overflow-hidden rounded-full bg-[#4e516a] dark:bg-white/15 py-1 pl-1 pr-1 sm:min-h-[54px] sm:gap-3 sm:rounded-[27px] sm:pl-[18px] sm:pr-[7px]"
             >
               <span className="relative hidden h-5 overflow-hidden sm:block">
                 <span className="block h-5 leading-5 text-sm font-medium text-white transition-all duration-300 group-hover:-translate-y-full group-hover:scale-110 group-hover:opacity-0" style={{ transitionTimingFunction: EASE }}>
-                  Start Project
+                  Get Started
                 </span>
                 <span className="absolute left-0 top-full block h-5 origin-bottom scale-90 leading-5 text-sm font-medium text-white transition-all duration-300 group-hover:-translate-y-full group-hover:scale-100" style={{ transitionTimingFunction: EASE }}>
-                  Start Project
+                  Get Started
                 </span>
               </span>
               <span className="relative flex h-6 w-6 items-center justify-center overflow-hidden rounded-full bg-white dark:bg-[#202342] sm:h-10 sm:w-10">
@@ -163,7 +163,7 @@ export default function Header() {
             <ul className="flex flex-col gap-5">
               {[
                 { href: "/", label: "Home" },
-                { href: "/services", label: "Services" },
+                { href: "/services", label: "Solutions" },
                 { href: "/work", label: "Work" },
                 { href: "/about", label: "About" },
               ].map((item) => (

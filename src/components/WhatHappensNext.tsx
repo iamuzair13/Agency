@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -9,8 +8,8 @@ const steps = [
   {
     num: "01",
     timeframe: "Within 24 hours",
-    title: "We review your brief",
-    desc: "A senior lead reads your message — not a bot, not an intern. We check fit, scope, and whether we can genuinely help.",
+    title: "We review your message",
+    desc: "A senior team member reads your message not a bot, not an intern. We check if we can genuinely help your business grow.",
     icon: (
       <>
         <path d="M3 8l9 6 9-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
@@ -22,7 +21,7 @@ const steps = [
     num: "02",
     timeframe: "Day 2–3",
     title: "Discovery call (30 min)",
-    desc: "A focused video call to dig into goals, constraints, and timeline. You leave with a clear picture of next steps — no sales pitch.",
+    desc: "A focused video call to understand your business, your customers, and your goals. You leave with a clear picture of next steps no sales pitch.",
     icon: (
       <>
         <rect x="2" y="6" width="14" height="12" rx="2" stroke="currentColor" strokeWidth="1.8" />
@@ -34,7 +33,7 @@ const steps = [
     num: "03",
     timeframe: "Day 3–5",
     title: "Fixed quote + timeline",
-    desc: "You get a written proposal with a locked scope, milestone breakdown, and a fixed price. No hourly billing, no surprise invoices.",
+    desc: "You get a written proposal with a locked scope, clear milestones, and a fixed price. No hourly billing, no surprise invoices.",
     icon: (
       <>
         <path d="M9 11l3 3L22 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
@@ -45,8 +44,8 @@ const steps = [
   {
     num: "04",
     timeframe: "Week 1",
-    title: "Kickoff & first commit",
-    desc: "Contract signed, repo created, staging URL live by end of week one. You see real code before you pay the second milestone.",
+    title: "Kickoff & first preview",
+    desc: "Project starts, and you see real progress by end of week one. You see your project coming to life before you pay the second milestone.",
     icon: (
       <>
         <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
@@ -57,15 +56,8 @@ const steps = [
 ];
 
 export default function WhatHappensNext() {
-  // Live "currently online" indicator that toggles to feel alive
-  const [online, setOnline] = useState(true);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setOnline((o) => o);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
+  // Static "currently online" indicator (always online)
+  const online = true;
 
   return (
     <section className="relative overflow-hidden bg-white py-16 transition-colors duration-500 dark:bg-[#0a0b16] sm:py-24 lg:py-32">

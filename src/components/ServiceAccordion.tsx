@@ -10,13 +10,13 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 // Short tagline per service for the accordion row
 const taglines: Record<string, string> = {
-  "Frontend Development": "Pixel-perfect UIs that load fast and feel alive.",
-  "Backend Development": "APIs & databases engineered for scale and security.",
-  "Full Stack Dev": "End-to-end builds from schema to deployed product.",
-  "Graphic Designing": "Brand systems that make first impressions count.",
-  "UI/UX Design": "Research-driven design that users actually love.",
-  "Motion Graphics": "Animated stories that simplify the complex.",
-  "Animations": "Micro-interactions & scroll effects at 60fps.",
+  "High-Converting Websites": "Turn visitors into paying customers 24/7.",
+  "Scalable Business Systems": "Platforms that grow with you from 100 to 1M customers.",
+  "Complete Digital Products": "From idea to launch, we handle everything for you.",
+  "Brand Identity Design": "A brand customers remember, trust, and choose.",
+  "Customer Experience Design": "Journeys so smooth your customers tell their friends.",
+  "Brand Storytelling Videos": "Videos that make customers want what you offer.",
+  "Interactive Experiences": "Websites that feel alive and keep visitors engaged.",
 };
 
 export default function ServiceAccordion() {
@@ -34,14 +34,14 @@ export default function ServiceAccordion() {
           className="mb-12 max-w-2xl sm:mb-16"
         >
           <span className="inline-block text-xs font-medium uppercase tracking-[0.2em] text-[#4e516a] transition-colors duration-500 dark:text-white/50">
-            Capabilities
+            What We Offer
           </span>
           <h2 className="mt-4 text-[28px] font-medium leading-[1.05] tracking-tight text-[#202342] dark:text-white sm:text-[40px] sm:tracking-[-1.5px] lg:text-[48px]">
             Everything you need, one team.
           </h2>
           <p className="mt-4 text-sm text-[#4e516a] dark:text-white/60 sm:text-base">
             Hover or tap a capability to see what&apos;s inside. Seven
-            disciplines, one integrated squad — no hand-offs, no silos.
+            disciplines, one integrated squad no hand-offs, no silos.
           </p>
         </motion.div>
 

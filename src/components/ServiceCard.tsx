@@ -1,106 +1,107 @@
 "use client";
 
 import { useRef } from "react";
+import { useRouter } from "next/navigation";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
 // ─── Service data ─────────────────────────────────────────────
 export const services = [
   {
     num: "01",
-    title: "Frontend Development",
+    title: "High-Converting Websites",
     bg: "#2563eb",
     fg: "#ffffff",
     features: [
-      "Pixel-perfect, responsive UIs with React, Next.js & Tailwind CSS.",
-      "Type-safe codebase with TypeScript end-to-end, zero any types.",
-      "Lighthouse 90+ scores on performance, accessibility & SEO.",
-      "Server-side rendering and static generation for maximum speed.",
-      "Design system with reusable components documented in Storybook.",
-      "Cross-browser tested on Chrome, Safari, Firefox & Edge.",
+      "Websites that turn visitors into paying customers not just pretty pages.",
+      "Mobile-first design that looks stunning on every screen your customers use.",
+      "Lightning-fast load speeds that keep bounce rates low and engagement high.",
+      "SEO built in from day one so Google sends you free traffic for years.",
+      "Conversion-optimized layouts backed by user behavior research.",
+      "A website that works as your best salesperson 24 hours a day, 7 days a week.",
     ],
   },
   {
     num: "02",
-    title: "Backend Development",
+    title: "Scalable Business Systems",
     bg: "#7c3aed",
     fg: "#ffffff",
     features: [
-      "REST & GraphQL APIs with clean architecture and full documentation.",
-      "PostgreSQL & MongoDB databases designed for scale and performance.",
-      "JWT & OAuth authentication with role-based access control.",
-      "Payment integration with Stripe, PayPal & subscription billing.",
-      "Rate limiting, caching & security hardening out of the box.",
-      "Automated testing with 80%+ coverage on critical paths.",
+      "Custom platforms that handle thousands of customers without breaking a sweat.",
+      "Secure payment processing that makes checkout effortless for your buyers.",
+      "Customer accounts, dashboards, and self-service portals your users will love.",
+      "Automated workflows that save your team hours of manual work every week.",
+      "Inventory, bookings, and orders managed in one place no more spreadsheets.",
+      "Built to grow with you from your first 100 customers to your first million.",
     ],
   },
   {
     num: "03",
-    title: "Full Stack Dev",
+    title: "Complete Digital Products",
     bg: "#0c1530",
     fg: "#ffffff",
     features: [
-      "End-to-end product builds from database schema to deployed UI.",
-      "CI/CD pipelines with GitHub Actions for automated deployments.",
-      "Docker containerization & cloud hosting on AWS, Vercel or Railway.",
-      "Real-time features with WebSockets & Server-Sent Events.",
-      "Admin dashboards & analytics built into every product.",
-      "Full code handover with documentation on day one, no lock-in.",
+      "From idea to launch we handle everything so you can focus on your business.",
+      "Your product live in weeks, not months, with weekly progress you can see.",
+      "Real customer feedback built into the process from day one.",
+      "Admin panels and analytics that show you exactly how your business is performing.",
+      "You own everything your product, your data, your customers. No lock-in, ever.",
+      "Post-launch support that keeps your product running smoothly after go-live.",
     ],
   },
   {
     num: "04",
-    title: "Graphic Designing",
+    title: "Brand Identity Design",
     bg: "#db2777",
     fg: "#ffffff",
     features: [
-      "Brand identity systems — logo, color palette, typography & guidelines.",
-      "Marketing collateral: brochures, flyers, business cards & decks.",
-      "Social media kits with templates for posts, stories & ads.",
-      "Print-ready artwork with proper bleed, margins & color profiles.",
-      "Icon sets & illustration packs custom-drawn for your brand.",
-      "Unlimited revisions until you love the final result, guaranteed.",
+      "A brand that customers remember, trust, and choose over competitors.",
+      "Logo, colors, and typography that make you look established from day one.",
+      "Marketing materials that look premium brochures, decks, and business cards.",
+      "Social media templates your team can use to post consistently and professionally.",
+      "A brand guide that keeps everyone on the same page as you grow.",
+      "Unlimited revisions until you are absolutely proud of how your brand looks.",
     ],
   },
   {
     num: "05",
-    title: "UI/UX Design",
+    title: "Customer Experience Design",
     bg: "#059669",
     fg: "#ffffff",
     features: [
-      "User research, personas & journey maps to inform every decision.",
-      "Low-fi wireframes to high-fi interactive Figma prototypes.",
-      "Design systems with tokens, components & documentation.",
-      "Usability testing with real users before a single line of code.",
-      "Accessibility-first design meeting WCAG 2.1 AA standards.",
-      "Developer handoff with specs, assets & redlines in Figma.",
+      "Designs based on real customer research not guesses or assumptions.",
+      "User journeys that guide customers naturally toward buying from you.",
+      "Interactive prototypes you can click through before we build anything.",
+      "Usability tested with real people so your customers never get frustrated.",
+      "Accessible to every customer including those with disabilities.",
+      "An experience so smooth your customers will tell their friends about it.",
     ],
   },
   {
     num: "06",
-    title: "Motion Graphics",
+    title: "Brand Storytelling Videos",
     bg: "#ea580c",
     fg: "#ffffff",
     features: [
-      "Animated logos & brand stingers that make first impressions count.",
-      "Explainer videos that simplify complex products in 60 seconds.",
-      "Lottie animations for web & mobile — lightweight & scalable.",
-      "Social media motion content for reels, stories & ads.",
-      "Title cards, lower thirds & transitions for video content.",
-      "Sound design & music sync to bring motion to life.",
+      "Videos that explain your product in 60 seconds and make customers want it.",
+      "Animated brand intros that make every first impression unforgettable.",
+      "Social media video content that stops the scroll and drives engagement.",
+      "Product demos that show customers exactly why they need what you offer.",
+      "Motion that brings your brand personality to life across every channel.",
+      "Content optimized for every platform Instagram, YouTube, your website, and more.",
     ],
   },
   {
     num: "07",
-    title: "Animations",
+    title: "Interactive Experiences",
     bg: "#4f46e5",
     fg: "#ffffff",
     features: [
-      "Micro-interactions & hover states that make UIs feel alive.",
-      "Scroll-triggered animations with Framer Motion & GSAP.",
-      "Page transitions & route animations for seamless SPA feel.",
-      "3D transforms & WebGL effects with Three.js & R3F.",
-      "Loading states & skeleton screens that delight, not frustrate.",
-      "Performance-optimized — 60fps animations on mobile devices.",
+      "Websites that feel alive customers stay longer and explore more.",
+      "Scroll animations that reveal your story step by step, keeping visitors engaged.",
+      "Smooth page transitions that make your site feel like a premium app.",
+      "Interactive product showcases that let customers explore before they buy.",
+      "Loading states and micro-interactions that make every click feel satisfying.",
+      "Buttery-smooth performance on every device no jank, no lag, no frustration.",
     ],
   },
 ];
@@ -131,6 +132,8 @@ function CheckIcon({ color }: { color: string }) {
 // ─── 3D Flip Service Card ─────────────────────────────────────
 export function ServiceCard({ s, index }: { s: (typeof services)[0]; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
+  const router = useRouter();
+  const goToContact = () => router.push("/contact");
 
   // Scroll progress: 0 = card entering from bottom, 1 = card leaving from top
   const { scrollYProgress } = useScroll({
@@ -160,6 +163,16 @@ export function ServiceCard({ s, index }: { s: (typeof services)[0]; index: numb
   return (
     <motion.div
       ref={ref}
+      role="link"
+      tabIndex={0}
+      aria-label={`Start a project ${s.title}`}
+      onClick={goToContact}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          goToContact();
+        }
+      }}
       className="group relative h-[460px] w-full cursor-pointer sm:h-[480px] md:h-auto md:aspect-[3/4]"
       style={{ perspective: "1400px" }}
       whileHover={{ scale: 1.02 }}
@@ -172,7 +185,7 @@ export function ServiceCard({ s, index }: { s: (typeof services)[0]; index: numb
           rotateY,
         }}
       >
-        {/* Front face — full content (visible after flip) */}
+        {/* Front face full content (visible after flip) */}
         <div
           className="absolute inset-0 flex flex-col overflow-hidden rounded-3xl p-6 text-white md:rounded-[2rem] md:p-7 lg:p-8"
           style={{
@@ -217,7 +230,7 @@ export function ServiceCard({ s, index }: { s: (typeof services)[0]; index: numb
           </ul>
         </div>
 
-        {/* Back face — name only (visible before flip) */}
+        {/* Back face name only (visible before flip) */}
         <div
           className="absolute inset-0 flex flex-col items-center justify-center overflow-hidden rounded-3xl p-6 text-white md:rounded-[2rem]"
           style={{

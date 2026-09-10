@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -18,8 +19,26 @@ const clients = [
 const loop = [...clients, ...clients];
 
 export default function ClientLogos() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Pause the CSS marquee animation when off-screen.
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const track = el.querySelector<HTMLElement>(".logo-marquee");
+    if (!track) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        track.style.animationPlayState = entry.isIntersecting ? "running" : "paused";
+      },
+      { threshold: 0 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   return (
-    <section className="relative overflow-hidden bg-white py-12 transition-colors duration-500 dark:bg-[#0f1020] sm:py-16">
+    <section ref={sectionRef} className="relative overflow-hidden bg-white py-12 transition-colors duration-500 dark:bg-[#0f1020] sm:py-16">
       <div className="mx-auto mb-8 max-w-7xl px-5 sm:px-6 lg:px-8">
         <motion.p
           initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
@@ -28,7 +47,7 @@ export default function ClientLogos() {
           transition={{ duration: 0.7, ease: EASE }}
           className="text-center text-xs font-medium uppercase tracking-[0.2em] text-[#4e516a] dark:text-white/40"
         >
-          Trusted by teams worldwide
+          Businesses that trust us
         </motion.p>
       </div>
 

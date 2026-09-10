@@ -1,33 +1,53 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 const techStack = [
-  { name: "React", category: "UI" },
-  { name: "Next.js", category: "Framework" },
-  { name: "TypeScript", category: "Language" },
-  { name: "Node.js", category: "Runtime" },
-  { name: "Tailwind CSS", category: "Styling" },
-  { name: "Framer Motion", category: "Animation" },
-  { name: "PostgreSQL", category: "Database" },
-  { name: "Prisma", category: "ORM" },
-  { name: "AWS", category: "Cloud" },
-  { name: "Vercel", category: "Deploy" },
-  { name: "Figma", category: "Design" },
-  { name: "GSAP", category: "Animation" },
-  { name: "Stripe", category: "Payments" },
-  { name: "Docker", category: "DevOps" },
-  { name: "GitHub Actions", category: "CI/CD" },
-  { name: "Three.js", category: "3D / WebGL" },
+  { name: "More Customers", category: "Growth" },
+  { name: "Higher Conversion", category: "Results" },
+  { name: "Faster Launch", category: "Speed" },
+  { name: "Mobile-First", category: "Experience" },
+  { name: "SEO-Ready", category: "Visibility" },
+  { name: "Brand Growth", category: "Identity" },
+  { name: "Easy to Manage", category: "Simple" },
+  { name: "Built to Scale", category: "Future" },
+  { name: "Customer Trust", category: "Credibility" },
+  { name: "Online Booking", category: "Revenue" },
+  { name: "Payment Ready", category: "Sales" },
+  { name: "Analytics Built-In", category: "Insights" },
+  { name: "24/7 Support", category: "Ongoing" },
+  { name: "Full Ownership", category: "Yours" },
+  { name: "Fixed Pricing", category: "Transparent" },
+  { name: "Premium Design", category: "Quality" },
 ];
 
 const loop = [...techStack, ...techStack];
 
 export default function TechMarquee() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Pause both CSS marquee animations when off-screen.
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const tracks = el.querySelectorAll<HTMLElement>(".tech-marquee-left, .tech-marquee-right");
+    if (tracks.length === 0) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        const state = entry.isIntersecting ? "running" : "paused";
+        tracks.forEach((t) => (t.style.animationPlayState = state));
+      },
+      { threshold: 0 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   return (
-    <section className="relative overflow-hidden bg-[#202342] py-12 dark:bg-black sm:py-16">
+    <section ref={sectionRef} className="relative overflow-hidden bg-[#202342] py-12 dark:bg-black sm:py-16">
       {/* Glow accents */}
       <div
         aria-hidden
@@ -47,11 +67,11 @@ export default function TechMarquee() {
         className="relative mb-8 text-center"
       >
         <span className="text-xs font-medium uppercase tracking-[0.25em] text-white/40">
-          The stack we ship with
+          What you get when you work with us
         </span>
       </motion.div>
 
-      {/* Marquee row 1 — scrolls left */}
+      {/* Marquee row 1 scrolls left */}
       <div className="relative flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
         <div className="tech-marquee-left flex w-max items-center gap-3 pl-3 sm:gap-4 sm:pl-4">
           {loop.map((tech, i) => (
@@ -71,7 +91,7 @@ export default function TechMarquee() {
         </div>
       </div>
 
-      {/* Marquee row 2 — scrolls right (reverse) */}
+      {/* Marquee row 2 scrolls right (reverse) */}
       <div className="relative mt-4 flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
         <div className="tech-marquee-right flex w-max items-center gap-3 pr-3 sm:gap-4 sm:pr-4">
           {[...loop].reverse().map((tech, i) => (

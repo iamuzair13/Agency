@@ -1,21 +1,24 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "framer-motion";
 import PixelButton from "@/components/PixelButton";
 import { siteConfig } from "@/config/site";
-import WhatHappensNext from "@/components/WhatHappensNext";
-import Footer from "@/components/Footer";
+
+// Below-the-fold sections are dynamically imported to reduce initial JS.
+const WhatHappensNext = dynamic(() => import("@/components/WhatHappensNext"));
+const Footer = dynamic(() => import("@/components/Footer"));
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 const EASE_CSS = "cubic-bezier(0.16, 1, 0.3, 1)" as const;
 
 const projectTypes = [
-  "Web App",
-  "Landing Page",
-  "Branding",
-  "Full Stack",
+  "Website",
+  "Online Store",
+  "Booking System",
+  "Brand Identity",
+  "Business Platform",
   "Other",
 ];
 
@@ -68,16 +71,16 @@ const socials = [
 ];
 
 const testimonials = [
-  { quote: "They shipped our MVP in 5 weeks. The code was clean, documented, and ready for due diligence. We closed our seed round 3 weeks later.", author: "Sarah Chen", role: "Founder, LeadFlow" },
-  { quote: "Best agency we've worked with. Fixed scope, no surprises, and the quality was senior-level. Our Lighthouse scores went from 40 to 95.", author: "Marcus Webb", role: "CTO, DataPulse" },
+  { quote: "They built our online booking platform in 5 weeks. Within the first month, we saw a 40% increase in bookings. The site is so easy to use, our customers actually prefer booking online now.", author: "Sarah Chen", role: "Owner, NJ Beauty Bliss" },
+  { quote: "Our new website paid for itself in the first quarter. Customer inquiries doubled, and we finally look like the premium brand our customers expect. Best investment we've made.", author: "Marcus Webb", role: "Director, DataPulse" },
 ];
 
 const faqs = [
-  { q: "How long does a typical project take?", a: "Most landing pages ship in 1-2 weeks. Full-stack web apps take 4-8 weeks depending on complexity. We lock the timeline upfront with clear milestones." },
-  { q: "Do I own the code?", a: "Yes — 100%. Full repo handover on day one, clean GitHub history, your accounts, your infra. No vendor lock-in, no proprietary frameworks." },
-  { q: "What's your pricing model?", a: "Fixed scope, milestone-based payments. No $50K deposits or 12-month retainers. You pay as the product takes shape and can stop at any milestone." },
-  { q: "Can you work with my existing team?", a: "Absolutely. We can embed alongside your team, handle a specific module, or take the full build. We use standard tools (GitHub, Slack, Linear) for seamless collaboration." },
-  { q: "Do you offer post-launch support?", a: "Yes. We offer 30 days of free bug fixes after launch, plus optional monthly maintenance retainer for ongoing updates and feature work." },
+  { q: "How long does a typical project take?", a: "Most websites launch in 1-2 weeks. Business platforms take 4-8 weeks depending on complexity. We lock the timeline upfront with clear milestones so you know exactly when you'll go live." },
+  { q: "Do I own everything you build?", a: "Yes 100%. Your website, your data, your customers, your brand. No vendor lock-in, no hidden dependencies. What we build is yours, completely and forever." },
+  { q: "What's your pricing model?", a: "Fixed budget, milestone-based payments. No massive deposits, no long-term contracts. You pay as your project takes shape and can pause at any milestone if priorities shift." },
+  { q: "Can you work with my existing team?", a: "Absolutely. We can handle everything end-to-end, work alongside your team, or handle a specific part. We communicate clearly and keep you in the loop every step of the way." },
+  { q: "Do you offer post-launch support?", a: "Yes. We include 30 days of free support after launch, plus optional monthly maintenance to keep everything running smoothly as your business grows." },
 ];
 
 export default function ContactPage() {
@@ -99,7 +102,7 @@ export default function ContactPage() {
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = "Please enter a valid email";
     if (!form.projectType) e.projectType = "Please select a project type";
     if (!form.budget) e.budget = "Please select a budget range";
-    if (!form.message.trim()) e.message = "Please tell us about your project";
+    if (!form.message.trim()) e.message = "Please tell us about your business";
     else if (form.message.trim().length < 10) e.message = "Message must be at least 10 characters";
     return e;
   };
@@ -158,7 +161,7 @@ export default function ContactPage() {
             transition={{ duration: 0.8, ease: EASE, delay: 0.1 }}
             className="mx-auto mt-4 max-w-xl text-[32px] font-medium leading-[1.05] tracking-tight text-[#202342] dark:text-white sm:text-[48px] sm:tracking-[-1.5px]"
           >
-            Let&apos;s start something great
+            Let's grow your business
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
@@ -166,8 +169,9 @@ export default function ContactPage() {
             transition={{ duration: 0.8, ease: EASE, delay: 0.2 }}
             className="mx-auto mt-4 max-w-md text-sm text-[#4e516a] dark:text-white/60 sm:text-base"
           >
-            Tell us about your project and we&apos;ll get back to you within 24
-            hours. Or reach us directly using the details below.
+            Tell us about your business and we'll get back to you within 24
+            hours with ideas on how to help you grow. Or reach us directly
+            using the details below.
           </motion.p>
 
           {/* Secondary contact methods */}
@@ -329,7 +333,7 @@ export default function ContactPage() {
                       rows={5}
                       value={form.message}
                       onChange={handleChange}
-                      placeholder="Tell us about your project..."
+                      placeholder="Tell us about your business..."
                       className={`${inputClass("message")} resize-none`}
                     />
                     {errors.message && (
@@ -611,7 +615,7 @@ export default function ContactPage() {
           className="mx-auto max-w-2xl px-5 text-center sm:px-6"
         >
           <h2 className="text-[28px] font-medium tracking-tight text-[#202342] dark:text-white sm:text-[36px]">
-            Prefer to explore first?
+            Prefer to see more first?
           </h2>
           <p className="mx-auto mt-4 max-w-md text-sm text-[#4e516a] dark:text-white/60 sm:text-base">
             Check out our work or browse our services to see what we can do for
